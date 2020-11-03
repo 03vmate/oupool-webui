@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+ 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/libs/css/style.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="assets/vendor/charts/chartist-bundle/chartist.css">
+    <link rel="stylesheet" href="assets/vendor/charts/morris-bundle/morris.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendor/charts/c3charts/c3.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <title>Official uPlexa Pool</title>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+        <!-- ============================================================== -->
+        <!-- left sidebar -->
+        <!-- ============================================================== -->
+        <div class="nav-left-sidebar sidebar-dark">
+            <div class="menu-list">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-divider">
+                                Official uPlexa Pool
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="index.html"><i class="fa fa-fw fa-th"></i>Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="blocks.html"><i class="fa fa-fw fa-cubes"></i>Blocks</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="payments.html"><i class="fa fa-fw fa-credit-card"></i>Payments</a>
+                            </li>
+                            <br>
+                                Personal
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="workers.html"><i class="fas fa-fw fa-user-circle"></i> My Workers </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="settings.html"><i class="fas fa-fw fa-cog"></i> Settings </a>
+                            </li>
+                            <br>
+                                Help & Support
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="start.html"><i class="fas fa-fw fa-rocket"></i> Getting Started </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="faq.html"><i class="fas fa-fw fa-question-circle"></i> FAQ </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fas fa-fw fa-comments"></i> Discord </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end left sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- wrapper  -->
+        <!-- ============================================================== -->
+        <div class="dashboard-wrapper">
+            <div class="dashboard-ecommerce">
+                <div class="container-fluid dashboard-content ">
+                    <div class="ecommerce-widget">
+                        <div class="row">
+                            <!-- ============================================================== -->
+                            <!-- Blocks Found  -->
+                            <!-- ============================================================== -->
+                            <div class="col-12">
+                                <div class="card border-3 border-top border-top">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">uPlexa Address:</h5>
+                                        <div style="display: table; width: 100%;">
+                                            <input type="text" style="width: 100%; height: 30px; border: 1px solid #7171a6; border-radius: 3px; outline: none;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end Blocks Found  -->
+                            <!-- ============================================================== -->
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Hashrate</h5>
+                                        <div class="metric-value d-inline-block">
+                                            <h1 class="mb-1">123kH/s</h1>
+                                        </div>
+                                    </div>
+                                    <div id="sparkline-revenue"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- ============================================================== -->
+                            <!-- Blocks Found  -->
+                            <!-- ============================================================== -->
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                <div class="card border-3 border-top border-top-orange">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Pending Balance</h5>
+                                        <div class="metric-value d-inline-block">
+                                            <h1 class="mb-1">123 UPX</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end Blocks Found  -->
+                            <!-- ============================================================== -->
+                            <!-- ============================================================== -->
+                            <!-- Blocks Found Solo  -->
+                            <!-- ============================================================== -->
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                <div class="card border-3 border-top border-top-orange">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Next Payout in</h5>
+                                        <div class="metric-value d-inline-block">
+                                            <h1 class="mb-1">54 Seconds</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end Blocks Found Solo  -->
+                            <!-- ============================================================== -->
+                            <!-- ============================================================== -->
+                            <!-- Blocks Found Every  -->
+                            <!-- ============================================================== -->
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                <div class="card border-3 border-top border-top-orange">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Total Paid</h5>
+                                        <div class="metric-value d-inline-block">
+                                            <h1 class="mb-1">75637 UPX</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end Blocks Found Every  -->
+                            <!-- ============================================================== -->
+                            <!-- ============================================================== -->
+                            <!-- Current Effort  -->
+                            <!-- ============================================================== -->
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                <div class="card border-3 border-top border-top-primary">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Round Contribution</h5>
+                                        <div class="metric-value d-inline-block">
+                                            <h1 class="mb-1">92%</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end Current Effort  -->
+                            <!-- ============================================================== -->
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <!-- ============================================================== -->
+                                <!-- Top Miners  -->
+                                <!-- ============================================================== -->
+                                <div class="card">
+                                    <h5 class="card-header" style="border-bottom: none;">Workers</h5>
+                                    <h6 class="card-header">Status &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Worker Name</h6>
+                                    <div class="card-body p-0">
+                                        <ul class="traffic-sales list-group list-group-flush">
+                                            <li class="traffic-sales-content list-group-item ">
+                                                <i class="fa fa-cog workersIcon" style="margin-left: 12px;"></i>
+                                                <span class="traffic-sales-name" style="margin-left: 22px;">Ryzen Mining Rig #0</span>
+                                                <span class="traffic-sales-amount">129kH/s</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end sales traffice source  -->
+                            <!-- ============================================================== -->
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <!-- ============================================================== -->
+                                <!-- Top Miners  -->
+                                <!-- ============================================================== -->
+                                <div class="card">
+                                    <h5 class="card-header" style="border-bottom: none;">Transactions</h5>
+                                    <h6 class="card-header">
+                                        Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Transaction Hash
+                                    </h6>
+                                    <div class="card-body p-0">
+                                        <ul class="traffic-sales list-group list-group-flush">
+                                            <li class="traffic-sales-content list-group-item ">
+                                                <span class="traffic-sales-name">31/10/2020</span>
+                                                <span class="traffic-sales-name" style="margin-left: 28px;">2ea58079388282448856e99b50e5c3dd880c8ec2a17f23698c2a250afc8e4895</span>
+                                                <span class="traffic-sales-amount">1905 UPX</span>
+                                            </li>
+                                            <li class="traffic-sales-content list-group-item ">
+                                                <span class="traffic-sales-name">30/10/2020</span>
+                                                <span class="traffic-sales-name" style="margin-left: 28px;">7fa58079345643645666e99b50e5c3dd7d8c8ec2a17f23698c2a250afc8e1453</span>
+                                                <span class="traffic-sales-amount">1805 UPX</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end sales traffice source  -->
+                            <!-- ============================================================== -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper  -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <!-- jquery 3.3.1 -->
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <!-- bootstap bundle js -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- slimscroll js -->
+    <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <!-- main js -->
+    <script src="assets/libs/js/main-js.js"></script>
+    <!-- chart chartist js -->
+    <script src="assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <!-- sparkline js -->
+    <script src="assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <!-- morris js -->
+    <script src="assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="assets/vendor/charts/morris-bundle/morris.js"></script>
+    <!-- chart c3 js -->
+    <script src="assets/vendor/charts/c3charts/c3.min.js"></script>
+    <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+    <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script src="assets/libs/js/dashboard-ecommerce.js"></script>
+</body>
+ 
+</html>
