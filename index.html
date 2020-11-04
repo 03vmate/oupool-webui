@@ -89,7 +89,7 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Hashrate</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">123kH/s</h1>
+                                            <h1 class="mb-1" id="poolHashrate"></h1>
                                         </div>
                                     </div>
                                     <div id="sparkline-revenue"></div>
@@ -100,7 +100,7 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Difficulty</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">3 123 456 567</h1>
+                                            <h1 class="mb-1" id="networkDifficulty"></h1>
                                         </div>
                                     </div>
                                     <div id="sparkline-revenue2"></div>
@@ -109,9 +109,9 @@
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="text-muted">Active Miners</h5>
+                                        <h5 class="text-muted">Active Workers</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">5</h1>
+                                            <h1 class="mb-1" id="poolWorkers"></h1>
                                         </div>
                                     </div>
                                     <div id="sparkline-revenue3"></div>
@@ -120,9 +120,9 @@
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="text-muted">Active Workers</h5>
+                                        <h5 class="text-muted">UPX Price</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">8</h1>
+                                            <h1 class="mb-1" id="coinPrice"></h1>
                                         </div>
                                     </div>
                                     <div id="sparkline-revenue4"></div>
@@ -138,7 +138,7 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Blocks Found</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">123</h1>
+                                            <h1 class="mb-1" id="poolBlocksFound"></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -150,11 +150,11 @@
                             <!-- Blocks Found Solo  -->
                             <!-- ============================================================== -->
                             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                                <div class="card border-3 border-top border-top-red">
+                                <div class="card border-3 border-top border-top-green">
                                     <div class="card-body">
                                         <h5 class="text-muted">Blocks Found - Solo</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">54</h1>
+                                            <h1 class="mb-1" id="poolBlocksFoundSolo"></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -170,7 +170,7 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Blocks Found Every</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">15 Minutes</h1>
+                                            <h1 class="mb-1" id="poolBlocksFoundEvery"></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -186,7 +186,7 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Current Effort</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">92%</h1>
+                                            <h1 class="mb-1" id="poolCurrentEffort"></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -200,11 +200,11 @@
                             <!-- Network Hashrate  -->
                             <!-- ============================================================== -->
                             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                                <div class="card border-3 border-top border-top-green">
+                                <div class="card border-3 border-top border-top-red">
                                     <div class="card-body">
                                         <h5 class="text-muted">Network Hashrate</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">25.42MH/s</h1>
+                                            <h1 class="mb-1" id="networkHashrate"></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -216,11 +216,11 @@
                             <!-- Blockchain Height  -->
                             <!-- ============================================================== -->
                             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                                <div class="card border-3 border-top border-top-green">
+                                <div class="card border-3 border-top border-top-red">
                                     <div class="card-body">
                                         <h5 class="text-muted">Blockchain Height</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">532 454</h1>
+                                            <h1 class="mb-1" id="networkHeight"></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -232,11 +232,11 @@
                             <!-- Last Reward  -->
                             <!-- ============================================================== -->
                             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                                <div class="card border-3 border-top border-top-green">
+                                <div class="card border-3 border-top border-top-primary">
                                     <div class="card-body">
                                         <h5 class="text-muted">Last Reward</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">1925.11 UPX</h1>
+                                            <h1 class="mb-1" id="poolLastReward"></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -252,7 +252,7 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Next Payout in</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">3 Minutes</h1>
+                                            <h1 class="mb-1" id="poolNextPayout"></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -269,22 +269,7 @@
                                 <div class="card">
                                     <h5 class="card-header"> Top Miners</h5>
                                     <div class="card-body p-0">
-                                        <ul class="traffic-sales list-group list-group-flush">
-                                            <li class="traffic-sales-content list-group-item "><span class="traffic-sales-name">UPXsomething.....whatever</span><span class="traffic-sales-amount">103kH/s</span>
-                                            </li>
-                                            <li class="traffic-sales-content list-group-item"><span class="traffic-sales-name">UPXsomething.....whatever<span class="traffic-sales-amount">103kH/s</span>
-                                                </span>
-                                            </li>
-                                            <li class="traffic-sales-content list-group-item"><span class="traffic-sales-name">UPXsomething.....whatever<span class="traffic-sales-amount ">103kH/s</span>
-                                                </span>
-                                            </li>
-                                            <li class="traffic-sales-content list-group-item"><span class="traffic-sales-name">UPXsomething.....whatever<span class="traffic-sales-amount ">103kH/s</span>
-                                                </span>
-                                            </li>
-                                            <li class="traffic-sales-content list-group-item "><span class="traffic-sales-name">UPXsomething.....whatever<span class="traffic-sales-amount">103kH/s</span>
-                                                </span>
-                                            </li>
-                                        </ul>
+                                        <ul class="traffic-sales list-group list-group-flush" id="topMiners"></ul>
                                     </div>
                                 </div>
                             </div>
@@ -323,7 +308,9 @@
     <script src="assets/vendor/charts/c3charts/c3.min.js"></script>
     <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
-    <script src="assets/libs/js/dashboard-ecommerce.js"></script>
+    <script src="apiConnector/config.js"></script>
+    <script src="apiConnector/utils.js"></script>
+    <script src="apiConnector/index.js"></script>
 </body>
  
 </html>
