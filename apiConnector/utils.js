@@ -43,72 +43,13 @@ function secondsToHm(d) {
     d = Number(d);
     var h = Math.floor(d / 3600);
     var m = Math.floor(d % 3600 / 60);
-
     var hDisplay = "";
     var mDisplay = "";
-
-    if(h == 0) {
-        hDisplay = "";
-    }
-    else if(h == 1) {
-        hDisplay = h + " Hour ";
-    }
-    else {
-        hDisplay = h + " Hours ";
-    }
-
-    if(m == 0) {
-        mDisplay = "";
-    }
-    else if(m == 1) {
-        mDisplay = m + " Minute ";
-    }
-    else {
-        mDisplay = m + " Minutes ";
-    }
-
+    if(h == 0)      { hDisplay = ""; }
+    else if(h == 1) { hDisplay = h + " Hour "; }
+    else            { hDisplay = h + " Hours "; }
+    if(m == 0)      { mDisplay = ""; }
+    else if(m == 1) { mDisplay = m + " Minute "; }
+    else            { mDisplay = m + " Minutes "; }
     return hDisplay + mDisplay; 
-}
-
-function secondsToHms(d) {
-    d = Number(d);
-    var h = Math.floor(d / 3600);
-    var m = Math.floor(d % 3600 / 60);
-    var s = Math.floor(d % 3600 % 60);
-
-    var hDisplay = "";
-    var mDisplay = "";
-    var sDisplay = "";
-
-    if(h == 0) {
-        hDisplay = "";
-    }
-    else if(h == 1) {
-        hDisplay = h + " Hour ";
-    }
-    else {
-        hDisplay = h + " Hours ";
-    }
-
-    if(m == 0) {
-        mDisplay = "";
-    }
-    else if(m == 1) {
-        mDisplay = m + " Minute ";
-    }
-    else {
-        mDisplay = m + " Minutes ";
-    }
-
-    if(s == 0) {
-        sDisplay = "";
-    }
-    else if(s == 1) {
-        sDisplay = s + " Second ";
-    }
-    else {
-        sDisplay = s + " Seconds ";
-    }
-
-    return hDisplay + mDisplay + sDisplay;
 }

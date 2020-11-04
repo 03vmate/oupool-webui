@@ -8,6 +8,7 @@ function updateAPI() {
         document.getElementById("poolBlocksFoundEvery").innerHTML = data.pool.hashrate != 0 ? secondsToHm((((data.network.difficulty / data.config.coinDifficultyTarget) / data.pool.hashrate) * 120)) : "Never";
         document.getElementById("poolCurrentEffort").innerHTML = (data.pool.roundHashes / data.network.difficulty * 100).toFixed(1) + "%";
         document.getElementById("poolLastReward").innerHTML = data.lastblock.reward / 100 + " UPX";
+
         var currentTime = Math.floor(Date.now() / 1000); 
         var nextPayoutTime = Math.floor(data.pool.payments[1] / 1000);
         while(nextPayoutTime < currentTime) { nextPayoutTime += data.config.paymentsInterval; }
@@ -35,12 +36,15 @@ function updateAPI() {
             lineColor: '#5969ff',
             fillColor: '#dbdeff',
             lineWidth: 2,
-            spotColor: undefined,
-            minSpotColor: undefined,
-            maxSpotColor: undefined,
-            highlightSpotColor: undefined,
-            highlightLineColor: undefined,
-            resize: true
+            spotColor: '',
+            minSpotColor: '',
+            maxSpotColor: '',
+            resize: true,
+            tooltipFormat: '',
+            cursor: '',
+            highlightLineColor: '',
+            highlightSpotColor: ''
+
         });
 
         //Diff Chart
@@ -60,12 +64,14 @@ function updateAPI() {
             lineColor: '#ff407b',
             fillColor: '#ffdbe6',
             lineWidth: 2,
-            spotColor: undefined,
-            minSpotColor: undefined,
-            maxSpotColor: undefined,
-            highlightSpotColor: undefined,
-            highlightLineColor: undefined,
-            resize: true
+            spotColor: '',
+            minSpotColor: '',
+            maxSpotColor: '',
+            resize: true,
+            tooltipFormat: '',
+            cursor: '',
+            highlightLineColor: '',
+            highlightSpotColor: ''
         });
 
         //Diff Chart
@@ -85,12 +91,14 @@ function updateAPI() {
             lineColor: '#25d5f2',
             fillColor: '#dffaff',
             lineWidth: 2,
-            spotColor: undefined,
-            minSpotColor: undefined,
-            maxSpotColor: undefined,
-            highlightSpotColor: undefined,
-            highlightLineColor: undefined,
-            resize: true
+            spotColor: '',
+            minSpotColor: '',
+            maxSpotColor: '',
+            resize: true,
+            tooltipFormat: '',
+            cursor: '',
+            highlightLineColor: '',
+            highlightSpotColor: ''
         });
         
     });
@@ -121,12 +129,14 @@ function updatePriceGraph() {
             lineColor: '#fec957',
             fillColor: '#fff2d5',
             lineWidth: 2,
-            spotColor: undefined,
-            minSpotColor: undefined,
-            maxSpotColor: undefined,
-            highlightSpotColor: undefined,
-            highlightLineColor: undefined,
+            spotColor: '',
+            minSpotColor: '',
+            maxSpotColor: '',
             resize: true,
+            tooltipFormat: '',
+            cursor: '',
+            highlightLineColor: '',
+            highlightSpotColor: ''
         });
 
 
