@@ -51,5 +51,6 @@ function secondsToHm(d) {
     if(m == 0)      { mDisplay = ""; }
     else if(m == 1) { mDisplay = m + " Minute "; }
     else            { mDisplay = m + " Minutes "; }
+    if(hDisplay + mDisplay == "") return "Unknown";
     return hDisplay + mDisplay; 
 }
