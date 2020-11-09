@@ -92,7 +92,7 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Total Payments</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">123</h1>
+                                            <h1 class="mb-1" id="totalPayments">123</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -108,7 +108,7 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Minimum Payout</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">54</h1>
+                                            <h1 class="mb-1" id="minPayout">54</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -124,7 +124,7 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Payout Interval</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">15 Minutes</h1>
+                                            <h1 class="mb-1" id="payoutInterval">15 Minutes</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -140,7 +140,7 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Next Payout in</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">9</h1>
+                                            <h1 class="mb-1" id="nextPayoutIn">9</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -157,28 +157,18 @@
                                 <div class="card">
                                     <h5 class="card-header">Payments</h5>
                                     <div class="card-body p-0">
-                                        <ul class="traffic-sales list-group list-group-flush">
-                                            <li class="traffic-sales-content list-group-item "><span class="traffic-sales-name">Block #324534</span><span class="traffic-sales-amount">10/27 13:04:30</span>
-                                            </li>
-                                            <li class="traffic-sales-content list-group-item"><span class="traffic-sales-name">Block #456452<span class="traffic-sales-amount">10/27 13:04:30</span>
-                                                </span>
-                                            </li>
-                                            <li class="traffic-sales-content list-group-item"><span class="traffic-sales-name">Block #742567<span class="traffic-sales-amount ">10/27 13:04:30</span>
-                                                </span>
-                                            </li>
-                                            <li class="traffic-sales-content list-group-item"><span class="traffic-sales-name">Block #456275<span class="traffic-sales-amount ">10/27 13:04:30</span>
-                                                </span>
-                                            </li>
-                                            <li class="traffic-sales-content list-group-item "><span class="traffic-sales-name">Block #653724<span class="traffic-sales-amount">10/27 13:04:30</span>
-                                                </span>
-                                            </li>
-                                        </ul>
+                                        <ul class="traffic-sales list-group list-group-flush" id="blocksTable"></ul>
                                     </div>
                                 </div>
                             </div>
                             <!-- ============================================================== -->
                             <!-- end sales traffice source  -->
                             <!-- ============================================================== -->
+                        </div>
+                        <div class="row">
+                            <div class="col text-center">
+                                <button style="outline: none; border: none; background-color:#6f42c1; color: #FFFFFF; height: 32px; width: 140px; cursor:pointer;" id="fetchMorePayments">Show More</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -211,7 +201,10 @@
     <script src="assets/vendor/charts/c3charts/c3.min.js"></script>
     <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
-    <script src="assets/libs/js/dashboard-ecommerce.js"></script>
+    <script src="apiConnector/config.js"></script>
+    <script src="apiConnector/utils.js"></script>
+    <script src="apiConnector/payments.js"></script>
+
 </body>
  
 </html>

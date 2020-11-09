@@ -46,11 +46,9 @@ function secondsToHm(d) {
     var hDisplay = "";
     var mDisplay = "";
     if(h == 0)      { hDisplay = ""; }
-    else if(h == 1) { hDisplay = h + " Hour "; }
-    else            { hDisplay = h + " Hours "; }
+    else            { hDisplay = h + "h "; }
     if(m == 0)      { mDisplay = ""; }
-    else if(m == 1) { mDisplay = m + " Minute "; }
-    else            { mDisplay = m + " Minutes "; }
+    else            { mDisplay = m + "m "; }
     if(hDisplay + mDisplay == "") return "Unknown";
     return hDisplay + mDisplay; 
 }

@@ -1,26 +1,37 @@
+var latestTimestamp = 0;
+var denom = 100;
+
 function updateBlocksTable() {
     fetch(poolApiUrl + "/stats").then(Response => Response.json()).then(data => {
+        denom = data.config.denominationUnit;
+        document.getElementById("totalPayments").innerHTML = data.pool.totalPayments;
+        document.getElementById("minPayout").innerHTML = data.config.minPaymentThreshold / data.config.denominationUnit + " UPX";
+        document.getElementById("payoutInterval").innerHTML = secondsToHm(data.config.paymentsInterval);
+        var currentTime = Math.floor(Date.now() / 1000); 
+        var nextPayoutTime = Math.floor(data.pool.payments[1] / 1000);
+        while(nextPayoutTime < currentTime) { nextPayoutTime += data.config.paymentsInterval; }
+        document.getElementById("nextPayoutIn").innerHTML = secondsToHm(nextPayoutTime - currentTime);
         
-        document.getElementById("poolBlocksFound").innerHTML = data.pool.totalBlocks;
-        document.getElementById("poolBlocksFoundSolo").innerHTML = data.pool.totalBlocksSolo;
-        document.getElementById("poolBlocksFoundEvery").innerHTML = data.pool.hashrate != 0 ? secondsToHm((((data.network.difficulty / data.config.coinDifficultyTarget) / data.pool.hashrate) * 120)) : "Never";
-        document.getElementById("avgLuck").innerHTML = Math.round(data.pool.totalShares / data.pool.totalDiff * 100) + "%";
-        
-        var blockIDs = [];
-        var blockData = [];
-        for(var i = 0; i < data.pool.blocks.length; i++) {
+        var paymentTimestamps = [];
+        var paymentData = [];
+        for(var i = 0; i < data.pool.payments.length; i++) {
             if(i % 2) {
-                blockIDs.push(data.pool.blocks[i]);
+                paymentTimestamps.push(data.pool.payments[i]);
             } 
             else {
-                blockData.push(data.pool.blocks[i].split(':'));
+                paymentData.push(data.pool.payments[i].split(':'));
             }
         }
-
+        
+        var _latestTimestamp = paymentTimestamps[0];
+        for(var i = 0; i < paymentTimestamps.length; i++) {
+            if(paymentTimestamps[i] < _latestTimestamp) _latestTimestamp = paymentTimestamps[i];
+        }
+        latestTimestamp = _latestTimestamp;
         var table = document.getElementById("blocksTable");
         table.innerHTML = "";
-        for(var i = 0; i < blockIDs.length; i++) {
-            var date = new Date(blockData[i][3] * 1000)
+        for(var i = 0; i < paymentTimestamps.length; i++) {
+            var date = new Date(paymentTimestamps[i] * 1000)
             var year = date.getFullYear();
             var month = "0" + (date.getMonth() + 1);
             var day = "0" + date.getDate();
@@ -35,14 +46,10 @@ function updateBlocksTable() {
             nameElement.appendChild(document.createTextNode(formattedTime));
             var foundby = document.createElement("span");
             foundby.className = "traffic-sales-amount";
-            foundby.appendChild(document.createTextNode(blockData[i][1]));
-            var height = document.createElement("span");
-            height.className = "traffic-sales-amount height";
-            height.appendChild(document.createTextNode(blockIDs[i]));
+            foundby.appendChild(document.createTextNode(paymentData[i][1] / data.config.denominationUnit + " UPX"));
             var blockHash = document.createElement("span");
             blockHash.className = "traffic-sales-amount";
-            blockHash.appendChild(document.createTextNode(blockData[i][0] + ":" + blockData[i][2]));
-            listElement.appendChild(height);
+            blockHash.appendChild(document.createTextNode(paymentData[i][0]));
             listElement.appendChild(nameElement);
             listElement.appendChild(foundby);
             listElement.appendChild(blockHash);
@@ -52,28 +59,26 @@ function updateBlocksTable() {
     });
 }
 
-document.getElementById("fetchMoreBlocks").addEventListener("click", function() {
-    var elements = document.getElementsByClassName("height");
-    var oldestBlockDisplayed = parseInt(elements[0].innerHTML);
-    for(var i = 0; i < elements.length; i++) {
-        if(parseInt(elements[i].innerHTML) < oldestBlockDisplayed) {
-            oldestBlockDisplayed = parseInt(elements[i].innerHTML);
-        }
-    }
-    fetch(poolApiUrl + "/get_blocks?height=" + oldestBlockDisplayed).then(Response => Response.json()).then(data => {
-        var blockIDs = [];
-        var blockData = [];
+document.getElementById("fetchMorePayments").addEventListener("click", function() {
+    fetch(poolApiUrl + "/get_payments?time=" + latestTimestamp).then(Response => Response.json()).then(data => {
+        var paymentTimestamps = [];
+        var paymentData = [];
         for(var i = 0; i < data.length; i++) {
             if(i % 2) {
-                blockIDs.push(data[i]);
+                paymentTimestamps.push(data[i]);
             } 
             else {
-                blockData.push(data[i].split(':'));
+                paymentData.push(data[i].split(':'));
             }
         }
+        var _latestTimestamp = paymentTimestamps[0];
+        for(var i = 0; i < paymentTimestamps.length; i++) {
+            if(paymentTimestamps[i] < _latestTimestamp) _latestTimestamp = paymentTimestamps[i];
+        }
+        latestTimestamp = _latestTimestamp;
         var table = document.getElementById("blocksTable");
-        for(var i = 0; i < blockIDs.length; i++) {
-            var date = new Date(blockData[i][3] * 1000)
+        for(var i = 0; i < paymentTimestamps.length; i++) {
+            var date = new Date(paymentTimestamps[i] * 1000)
             var year = date.getFullYear();
             var month = "0" + (date.getMonth() + 1);
             var day = "0" + date.getDate();
@@ -88,14 +93,10 @@ document.getElementById("fetchMoreBlocks").addEventListener("click", function() 
             nameElement.appendChild(document.createTextNode(formattedTime));
             var foundby = document.createElement("span");
             foundby.className = "traffic-sales-amount";
-            foundby.appendChild(document.createTextNode(blockData[i][1]));
-            var height = document.createElement("span");
-            height.className = "traffic-sales-amount height";
-            height.appendChild(document.createTextNode(blockIDs[i]));
+            foundby.appendChild(document.createTextNode(paymentData[i][1] / denom + " UPX"));
             var blockHash = document.createElement("span");
             blockHash.className = "traffic-sales-amount";
-            blockHash.appendChild(document.createTextNode(blockData[i][0] + ":" + blockData[i][2]));
-            listElement.appendChild(height);
+            blockHash.appendChild(document.createTextNode(paymentData[i][0]));
             listElement.appendChild(nameElement);
             listElement.appendChild(foundby);
             listElement.appendChild(blockHash);
