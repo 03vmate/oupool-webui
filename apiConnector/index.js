@@ -161,11 +161,12 @@ function updateTopMiners() {
     });
 }
 
-function update() {
+function updateIndex() {
     updateAPI();
     updatePrice();
     updatePriceGraph();
     updateTopMiners();
 }
 
-update();
+updateIndex();
+setInterval(updateIndex, 10000);

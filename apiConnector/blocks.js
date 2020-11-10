@@ -105,3 +105,4 @@ document.getElementById("fetchMoreBlocks").addEventListener("click", function() 
 });
 
 updateBlocksTable();
+setInterval(updateBlocksTable, 10000);

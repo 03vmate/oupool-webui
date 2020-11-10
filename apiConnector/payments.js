@@ -1,7 +1,7 @@
 var latestTimestamp = 0;
 var denom = 100;
 
-function updateBlocksTable() {
+function updatePaymentsTable() {
     fetch(poolApiUrl + "/stats").then(Response => Response.json()).then(data => {
         denom = data.config.denominationUnit;
         document.getElementById("totalPayments").innerHTML = data.pool.totalPayments;
@@ -105,4 +105,5 @@ document.getElementById("fetchMorePayments").addEventListener("click", function(
     });
 });
 
-updateBlocksTable();
+updatePaymentsTable();
+setInterval(updatePaymentsTable, 10000);
