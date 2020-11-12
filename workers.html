@@ -91,9 +91,8 @@
                                 <div class="card border-3 border-top border-top">
                                     <div class="card-body">
                                         <h5 class="text-muted">uPlexa Address:</h5>
-                                        <div style="display: table; width: 100%;">
-                                            <input type="text" style="width: 100%; height: 30px; border: 1px solid #7171a6; border-radius: 3px; outline: none;">
-                                        </div>
+                                        <input type="text" style="width: 100%; height: 30px; border: 1px solid #7171a6; border-radius: 3px; outline: none; float:left;" id="addressBox">
+                                        <button style="width: 100%; outline: none; border: none; border-radius: 3px; background-color:#7171a6; color: #FFFFFF; height: 32px; margin-top:3px; cursor:pointer;" id="boxButton" >Show Stats</button>
                                     </div>
                                 </div>
                             </div>
@@ -101,20 +100,20 @@
                             <!-- end Blocks Found  -->
                             <!-- ============================================================== -->
                         </div>
-                        <div class="row">
+                        <div class="row workerStats">
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="text-muted">Hashrate</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">123kH/s</h1>
+                                            <h1 class="mb-1" id="poolHashrate"></h1>
                                         </div>
                                     </div>
                                     <div id="sparkline-revenue"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row workerStats">
                             <!-- ============================================================== -->
                             <!-- Blocks Found  -->
                             <!-- ============================================================== -->
@@ -123,7 +122,7 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Pending Balance</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">123 UPX</h1>
+                                            <h1 class="mb-1" id="pendingBalance"></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -139,7 +138,7 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Next Payout in</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">54 Seconds</h1>
+                                            <h1 class="mb-1" id="nextPayoutIn"></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -155,7 +154,7 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Total Paid</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">75637 UPX</h1>
+                                            <h1 class="mb-1" id="totalPaid"></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -171,7 +170,7 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Round Contribution</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">92%</h1>
+                                            <h1 class="mb-1" id="roundContrib"></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -180,7 +179,7 @@
                             <!-- end Current Effort  -->
                             <!-- ============================================================== -->
                         </div>
-                        <div class="row">
+                        <div class="row workerStats">
                             <div class="col-12">
                                 <!-- ============================================================== -->
                                 <!-- Top Miners  -->
@@ -189,12 +188,8 @@
                                     <h5 class="card-header" style="border-bottom: none;">Workers</h5>
                                     <h6 class="card-header">Status &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Worker Name</h6>
                                     <div class="card-body p-0">
-                                        <ul class="traffic-sales list-group list-group-flush">
-                                            <li class="traffic-sales-content list-group-item ">
-                                                <i class="fa fa-cog workersIcon" style="margin-left: 12px;"></i>
-                                                <span class="traffic-sales-name" style="margin-left: 22px;">Ryzen Mining Rig #0</span>
-                                                <span class="traffic-sales-amount">129kH/s</span>
-                                            </li>
+                                        <ul class="traffic-sales list-group list-group-flush" id="workerList">
+                                            
                                         </ul>
                                     </div>
                                 </div>
@@ -203,7 +198,7 @@
                             <!-- end sales traffice source  -->
                             <!-- ============================================================== -->
                         </div>
-                        <div class="row">
+                        <div class="row workerStats">
                             <div class="col-12">
                                 <!-- ============================================================== -->
                                 <!-- Top Miners  -->
@@ -211,20 +206,10 @@
                                 <div class="card">
                                     <h5 class="card-header" style="border-bottom: none;">Transactions</h5>
                                     <h6 class="card-header">
-                                        Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Transaction Hash
+                                        Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Transaction Hash
                                     </h6>
                                     <div class="card-body p-0">
-                                        <ul class="traffic-sales list-group list-group-flush">
-                                            <li class="traffic-sales-content list-group-item ">
-                                                <span class="traffic-sales-name">31/10/2020</span>
-                                                <span class="traffic-sales-name" style="margin-left: 28px;">2ea58079388282448856e99b50e5c3dd880c8ec2a17f23698c2a250afc8e4895</span>
-                                                <span class="traffic-sales-amount">1905 UPX</span>
-                                            </li>
-                                            <li class="traffic-sales-content list-group-item ">
-                                                <span class="traffic-sales-name">30/10/2020</span>
-                                                <span class="traffic-sales-name" style="margin-left: 28px;">7fa58079345643645666e99b50e5c3dd7d8c8ec2a17f23698c2a250afc8e1453</span>
-                                                <span class="traffic-sales-amount">1805 UPX</span>
-                                            </li>
+                                        <ul class="traffic-sales list-group list-group-flush" id="transactionList">
                                         </ul>
                                     </div>
                                 </div>
@@ -264,7 +249,9 @@
     <script src="assets/vendor/charts/c3charts/c3.min.js"></script>
     <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
-    <script src="assets/libs/js/dashboard-ecommerce.js"></script>
+    <script src="apiConnector/config.js"></script>
+    <script src="apiConnector/utils.js"></script>
+    <script src="apiConnector/workers.js"></script>
 </body>
  
 </html>
