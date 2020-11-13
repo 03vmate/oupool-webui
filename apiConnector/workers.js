@@ -1,6 +1,5 @@
 document.getElementById("boxButton").addEventListener("click", function() {
     fetch(poolApiUrl + "/stats_address?address=" + document.getElementById("addressBox").value).then(Response => Response.json()).then(data => {
-        console.log(data);
         if(data.error != "Not found") {
             document.cookie = "addr=" + document.getElementById("addressBox").value;
             displayData();
