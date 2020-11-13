@@ -54,13 +54,13 @@
                                 <a class="nav-link" href="workers.html"><i class="fas fa-fw fa-user-circle"></i> My Workers </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="settings.html"><i class="fas fa-fw fa-cog"></i> Settings </a>
+                                <a class="nav-link" href="settings.html"><i class="fas fa-fw fa-cog"></i> Settings </a>
                             </li>
                             <br>
                                 Help & Support
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="start.html"><i class="fas fa-fw fa-rocket"></i> Getting Started </a>
+                                <a class="nav-link active" href="start.html"><i class="fas fa-fw fa-rocket"></i> Getting Started </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="faq.html"><i class="fas fa-fw fa-question-circle"></i> FAQ </a>
@@ -87,25 +87,79 @@
                             <!-- ============================================================== -->
                             <!-- Blocks Found  -->
                             <!-- ============================================================== -->
-                            <div class="col-12">
+                            <div class="col-3">
                                 <div class="card border-3 border-top border-top">
-                                    <div class="card-body">
-                                        <h5 class="text-muted">uPlexa Address:</h5>
-                                        <input type="text" style="width: 100%; height: 30px; border: 1px solid #7171a6; border-radius: 3px; outline: none;" id="addressBox">
-                                        <br><br>
-                                        <h5 class="text-muted">IP Address you mine from:</h5>
-                                        <input type="text" placeholder="Any IP address you mine from" style="width: 100%; height: 30px; border: 1px solid #7171a6; border-radius: 3px; outline: none;" id="ipBox">
-                                        <br><br>
-                                        <h5 class="text-muted">Minimum Payout Amount:</h5>
-                                        <input type="text" placeholder="100" style="width: 100%; height: 30px; border: 1px solid #7171a6; border-radius: 3px; outline: none;" id="payoutBox">
-                                        <br><br><br>
-                                        <button style="outline: none; border: none; background-color:#7171a6; color: #FFFFFF; height: 32px; width: 140px;" id="saveButton">Save Settings</button>
+                                    <div class="card-body" style="height: 400px;">
+                                        <h2 class="text-muted">Pool Addresses:</h5>
+                                        <br>
+                                        <p>Automatic - mine.uplexa.online:1111</p>
+                                        <p>Server1 - 123.123.123.123:1111</p>
+                                        <p>Server2 - whatever.uplexa.online:1111</p>
                                     </div>
                                 </div>
                             </div>
                             <!-- ============================================================== -->
                             <!-- end Blocks Found  -->
                             <!-- ============================================================== -->
+                            <!-- ============================================================== -->
+                            <!-- Blocks Found  -->
+                            <!-- ============================================================== -->
+                            <div class="col-6">
+                                <div class="card border-3 border-top border-top">
+                                    <div class="card-body" style="height: 400px;">
+                                        <h2 class="text-muted">Username:</h5>
+                                        <h4>address.difficulty(optional)+paymentid(optional)</h4>
+                                        <h5>Examples:</h6>
+                                        <p>UPXxxx</p>
+                                        <p>UPXxxx.20000 - Fixed difficulty of 20000</p>
+                                        <p>UPXxxx+yyyy - PaymentID yyyy</p>
+                                        <p>UPXxxx.20000+yyyy - PaymentID yyyy, Fixed Diff 20000</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="card border-3 border-top border-top">
+                                    <div class="card-body" style="height: 400px;">
+                                        <h2 class="text-muted">Password:</h5>
+                                        <h4>@workername</h4>
+                                        <h5>Examples:</h6>
+                                        <p>"@Ryzen Mining Rig"</p>
+                                        <p>@Desktop</p>
+                                        <p style="color: gainsboro">(use quotation marks if there are spaces in the worker name)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end Blocks Found  -->
+                            <!-- ============================================================== -->
+                        </div>
+                        <div class="row">
+                            <!-- ============================================================== -->
+                            <!-- Blocks Found  -->
+                            <!-- ============================================================== -->
+                            <div class="col-12">
+                                <div class="card border-3 border-top border-top">
+                                    <div class="card-body" style="height: auto;">
+                                        <h2 class="text-muted">Recommended Miners:</h5>
+                                        <br>
+                                        <h3 style="margin-bottom: 2px;">CPU - Official uPlexa Pool EasyMiner</h3>
+                                        <a>Coming Soon!</a>
+                                        <br><br><br>
+                                        <h3 style="margin-bottom: 2px;">CPU - XMRigCC</h3>
+                                        <a href="https://github.com/Bendr0id/xmrigCC/releases">Download from GitHub</a>
+                                        <input style="display: block; width: 750px;" value='xmrigDaemon.exe -a cryptonight-extremelite/upx2 -o mine.uplexa.online:1111 -p "@My Worker" --threads 8 -u UPXxxx' readonly>
+                                        <br><br>
+                                        <h3 style="margin-bottom: 2px;">AMD GPU - XMRigCC-AMD</h3>
+                                        <a href="https://github.com/Bendr0id/xmrigCC-amd/releases">Download from GitHub</a>
+                                        <input style="display: block; width: 750px;" value='xmrigDaemon.exe -a cryptonight-extremelite/upx2 -o mine.uplexa.online:1111 -p "@My Worker" -u UPXxxx' readonly>
+                                        <br><br>
+                                        <h3 style="margin-bottom: 2px;">NVIDIA GPU - CryptoDredge</h3>
+                                        <a href="https://github.com/technobyl/CryptoDredge/releases">Download from GitHub</a>
+                                        <input style="display: block; width: 750px;" value='CryptoDredge.exe -a cnupx2 -o mine.uplexa.online:1111 -p "@My Worker" -u UPXxxx' readonly>
+                                        <br><br>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
