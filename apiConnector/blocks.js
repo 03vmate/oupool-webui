@@ -8,6 +8,8 @@ function blockStatus(network, block, depth) {
     }
 }
 
+var oldestBlockDisplayed = 0;
+
 function updateBlocksTable() {
     fetch(poolApiUrl + "/stats").then(Response => Response.json()).then(data => {
         
@@ -26,6 +28,7 @@ function updateBlocksTable() {
                 blockData.push(data.pool.blocks[i].split(':'));
             }
         }
+        oldestBlockDisplayed = blockIDs[0];
 
         var table = document.getElementById("blocksTable");
         table.innerHTML = "";
@@ -39,62 +42,42 @@ function updateBlocksTable() {
             var seconds = "0" + date.getSeconds();
             var formattedTime = year + "/" + month.substr(-2) + "/" + day.substr(-2) + " - " + hours.substr(-2) + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
             table.innerHTML += "<tr>" + td(formattedTime) + td(blockIDs[i]) + td(blockData[i][7]) + td(blockData[i][2]) + td((blockData[i][0] == "solo" ? "Solo" : "Prop")) + td(blockData[i][1]) + td((blockData[i][5] / blockData[i][4] * 100).toFixed(0) + "%") + td((blockIDs[i] + data.config.depth <= data.network.height) ? "Confirmed" : blockStatus(data.network.height, blockIDs[i], data.config.depth)) + "</tr>";
+            if(blockIDs[i] < oldestBlockDisplayed) oldestBlockDisplayed = blockIDs[i];
         }
 
     });
 }
 
 document.getElementById("fetchMoreBlocks").addEventListener("click", function() {
-    var elements = document.getElementsByClassName("height");
-    var oldestBlockDisplayed = parseInt(elements[0].innerHTML);
-    for(var i = 0; i < elements.length; i++) {
-        if(parseInt(elements[i].innerHTML) < oldestBlockDisplayed) {
-            oldestBlockDisplayed = parseInt(elements[i].innerHTML);
-        }
-    }
-    fetch(poolApiUrl + "/get_blocks?height=" + oldestBlockDisplayed).then(Response => Response.json()).then(data => {
-        var blockIDs = [];
-        var blockData = [];
-        for(var i = 0; i < data.length; i++) {
-            if(i % 2) {
-                blockIDs.push(data[i]);
-            } 
-            else {
-                blockData.push(data[i].split(':'));
+    fetch(poolApiUrl + "/stats").then(Response => Response.json()).then(stats => {
+        fetch(poolApiUrl + "/get_blocks?height=" + oldestBlockDisplayed).then(Response => Response.json()).then(data => {
+            var blockIDs = [];
+            var blockData = [];
+            for(var i = 0; i < data.length; i++) {
+                if(i % 2) {
+                    blockIDs.push(data[i]);
+                } 
+                else {
+                    blockData.push(data[i].split(':'));
+                }
             }
-        }
-        var table = document.getElementById("blocksTable");
-        for(var i = 0; i < blockIDs.length; i++) {
-            var date = new Date(blockData[i][3] * 1000)
-            var year = date.getFullYear();
-            var month = "0" + (date.getMonth() + 1);
-            var day = "0" + date.getDate();
-            var hours = "0" + date.getHours();
-            var minutes = "0" + date.getMinutes();
-            var seconds = "0" + date.getSeconds();
-            var formattedTime = year + "/" + month.substr(-2) + "/" + day.substr(-2) + " - " + hours.substr(-2) + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-            var listElement = document.createElement("li");
-            listElement.className = "traffic-sales-content list-group-item";
-            var nameElement = document.createElement("span");
-            nameElement.className = "traffic-sales-name";
-            nameElement.appendChild(document.createTextNode(formattedTime));
-            var foundby = document.createElement("span");
-            foundby.className = "traffic-sales-amount";
-            foundby.appendChild(document.createTextNode(blockData[i][1]));
-            var height = document.createElement("span");
-            height.className = "traffic-sales-amount height";
-            height.appendChild(document.createTextNode(blockIDs[i]));
-            var blockHash = document.createElement("span");
-            blockHash.className = "traffic-sales-amount";
-            blockHash.appendChild(document.createTextNode(blockData[i][0] + ":" + blockData[i][2]));
-            listElement.appendChild(height);
-            listElement.appendChild(nameElement);
-            listElement.appendChild(foundby);
-            listElement.appendChild(blockHash);
-            table.appendChild(listElement);
-        }
+            var table = document.getElementById("blocksTable");
+            for(var i = 0; i < blockIDs.length; i++) {
+                var date = new Date(blockData[i][3] * 1000)
+                var year = date.getFullYear();
+                var month = "0" + (date.getMonth() + 1);
+                var day = "0" + date.getDate();
+                var hours = "0" + date.getHours();
+                var minutes = "0" + date.getMinutes();
+                var seconds = "0" + date.getSeconds();
+                var formattedTime = year + "/" + month.substr(-2) + "/" + day.substr(-2) + " - " + hours.substr(-2) + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+                table.innerHTML += "<tr>" + td(formattedTime) + td(blockIDs[i]) + td(blockData[i][7]) + td(blockData[i][2]) + td((blockData[i][0] == "solo" ? "Solo" : "Prop")) + td(blockData[i][1]) + td((blockData[i][5] / blockData[i][4] * 100).toFixed(0) + "%") + td((blockIDs[i] + stats.config.depth <= stats.network.height) ? "Confirmed" : blockStatus(stats.network.height, blockIDs[i], stats.config.depth)) + "</tr>";
+                if(blockIDs[i] < oldestBlockDisplayed) oldestBlockDisplayed = blockIDs[i];
+            }
+        });
     });
+    clearInterval(autorefresh);
 });
 
 updateBlocksTable();
-setInterval(updateBlocksTable, 10000);
+var autorefresh = setInterval(updateBlocksTable, 10000);
