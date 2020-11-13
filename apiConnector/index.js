@@ -144,6 +144,7 @@ function updatePriceGraph() {
 }
 
 function updateTopMiners() {
+    document.getElementById("topMiners").innerHTML = "";
     fetch(poolApiUrl + "/get_top10miners").then(Response => Response.json()).then(data => {
         for(var i = 0; i < data.length; i++) {
             var listElement = document.createElement("li");

@@ -1,3 +1,13 @@
+function blockStatus(network, block, depth) {
+    var confirmedAt = parseInt(block) + parseInt(depth)
+    if(confirmedAt <= network) {
+        return "Confirmed";
+    }
+    else {
+        return parseInt(depth) - (parseInt(network) - parseInt(block)) + " Blocks Left";
+    }
+}
+
 function updateBlocksTable() {
     fetch(poolApiUrl + "/stats").then(Response => Response.json()).then(data => {
         
@@ -28,25 +38,7 @@ function updateBlocksTable() {
             var minutes = "0" + date.getMinutes();
             var seconds = "0" + date.getSeconds();
             var formattedTime = year + "/" + month.substr(-2) + "/" + day.substr(-2) + " - " + hours.substr(-2) + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-            var listElement = document.createElement("li");
-            listElement.className = "traffic-sales-content list-group-item";
-            var nameElement = document.createElement("span");
-            nameElement.className = "traffic-sales-name";
-            nameElement.appendChild(document.createTextNode(formattedTime));
-            var foundby = document.createElement("span");
-            foundby.className = "traffic-sales-amount";
-            foundby.appendChild(document.createTextNode(blockData[i][1]));
-            var height = document.createElement("span");
-            height.className = "traffic-sales-amount height";
-            height.appendChild(document.createTextNode(blockIDs[i]));
-            var blockHash = document.createElement("span");
-            blockHash.className = "traffic-sales-amount";
-            blockHash.appendChild(document.createTextNode(blockData[i][0] + ":" + blockData[i][2]));
-            listElement.appendChild(height);
-            listElement.appendChild(nameElement);
-            listElement.appendChild(foundby);
-            listElement.appendChild(blockHash);
-            table.appendChild(listElement);
+            table.innerHTML += "<tr>" + td(formattedTime) + td(blockIDs[i]) + td(blockData[i][7]) + td(blockData[i][2]) + td((blockData[i][0] == "solo" ? "Solo" : "Prop")) + td(blockData[i][1]) + td((blockData[i][5] / blockData[i][4] * 100).toFixed(0) + "%") + td((blockIDs[i] + data.config.depth <= data.network.height) ? "Confirmed" : blockStatus(data.network.height, blockIDs[i], data.config.depth)) + "</tr>";
         }
 
     });

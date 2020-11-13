@@ -68,3 +68,7 @@ function getCookie(cname) {
     }
     return "";
 }
+
+function td(content) {
+    return "<td>" + content + "</td>";
+}
