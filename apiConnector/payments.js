@@ -1,9 +1,7 @@
 var latestTimestamp = 0;
-var denom = 100;
 
 function updatePaymentsTable() {
     fetch(poolApiUrl + "/stats").then(Response => Response.json()).then(data => {
-        denom = data.config.denominationUnit;
         document.getElementById("totalPayments").innerHTML = data.pool.totalPayments;
         document.getElementById("minPayout").innerHTML = data.config.minPaymentThreshold / data.config.denominationUnit + " UPX";
         document.getElementById("payoutInterval").innerHTML = secondsToHm(data.config.paymentsInterval);
@@ -28,7 +26,7 @@ function updatePaymentsTable() {
             if(paymentTimestamps[i] < _latestTimestamp) _latestTimestamp = paymentTimestamps[i];
         }
         latestTimestamp = _latestTimestamp;
-        var table = document.getElementById("blocksTable");
+        var table = document.getElementById("paymentsTable");
         table.innerHTML = "";
         for(var i = 0; i < paymentTimestamps.length; i++) {
             var date = new Date(paymentTimestamps[i] * 1000)
@@ -39,71 +37,46 @@ function updatePaymentsTable() {
             var minutes = "0" + date.getMinutes();
             var seconds = "0" + date.getSeconds();
             var formattedTime = year + "/" + month.substr(-2) + "/" + day.substr(-2) + " - " + hours.substr(-2) + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-            var listElement = document.createElement("li");
-            listElement.className = "traffic-sales-content list-group-item";
-            var nameElement = document.createElement("span");
-            nameElement.className = "traffic-sales-name";
-            nameElement.appendChild(document.createTextNode(formattedTime));
-            var foundby = document.createElement("span");
-            foundby.className = "traffic-sales-amount";
-            foundby.appendChild(document.createTextNode(paymentData[i][1] / data.config.denominationUnit + " UPX"));
-            var blockHash = document.createElement("span");
-            blockHash.className = "traffic-sales-amount";
-            blockHash.appendChild(document.createTextNode(paymentData[i][0]));
-            listElement.appendChild(nameElement);
-            listElement.appendChild(foundby);
-            listElement.appendChild(blockHash);
-            table.appendChild(listElement);
+            table.innerHTML += '<tr><td style="width: 200px;">' + formattedTime + '</td><td>' + paymentData[i][0] + '</td><td style="width: 120px;">' + (paymentData[i][1] / data.config.denominationUnit + " UPX") + '</td></tr>';
         }
 
     });
 }
 
 document.getElementById("fetchMorePayments").addEventListener("click", function() {
-    fetch(poolApiUrl + "/get_payments?time=" + latestTimestamp).then(Response => Response.json()).then(data => {
-        var paymentTimestamps = [];
-        var paymentData = [];
-        for(var i = 0; i < data.length; i++) {
-            if(i % 2) {
-                paymentTimestamps.push(data[i]);
-            } 
-            else {
-                paymentData.push(data[i].split(':'));
+    fetch(poolApiUrl + "/stats").then(Response => Response.json()).then(stats => {
+        fetch(poolApiUrl + "/get_payments?time=" + latestTimestamp).then(Response => Response.json()).then(data => {
+            var paymentTimestamps = [];
+            var paymentData = [];
+            for(var i = 0; i < data.length; i++) {
+                if(i % 2) {
+                    paymentTimestamps.push(data[i]);
+                } 
+                else {
+                    paymentData.push(data[i].split(':'));
+                }
             }
-        }
-        var _latestTimestamp = paymentTimestamps[0];
-        for(var i = 0; i < paymentTimestamps.length; i++) {
-            if(paymentTimestamps[i] < _latestTimestamp) _latestTimestamp = paymentTimestamps[i];
-        }
-        latestTimestamp = _latestTimestamp;
-        var table = document.getElementById("blocksTable");
-        for(var i = 0; i < paymentTimestamps.length; i++) {
-            var date = new Date(paymentTimestamps[i] * 1000)
-            var year = date.getFullYear();
-            var month = "0" + (date.getMonth() + 1);
-            var day = "0" + date.getDate();
-            var hours = "0" + date.getHours();
-            var minutes = "0" + date.getMinutes();
-            var seconds = "0" + date.getSeconds();
-            var formattedTime = year + "/" + month.substr(-2) + "/" + day.substr(-2) + " - " + hours.substr(-2) + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-            var listElement = document.createElement("li");
-            listElement.className = "traffic-sales-content list-group-item";
-            var nameElement = document.createElement("span");
-            nameElement.className = "traffic-sales-name";
-            nameElement.appendChild(document.createTextNode(formattedTime));
-            var foundby = document.createElement("span");
-            foundby.className = "traffic-sales-amount";
-            foundby.appendChild(document.createTextNode(paymentData[i][1] / denom + " UPX"));
-            var blockHash = document.createElement("span");
-            blockHash.className = "traffic-sales-amount";
-            blockHash.appendChild(document.createTextNode(paymentData[i][0]));
-            listElement.appendChild(nameElement);
-            listElement.appendChild(foundby);
-            listElement.appendChild(blockHash);
-            table.appendChild(listElement);
-        }
+            var _latestTimestamp = paymentTimestamps[0];
+            for(var i = 0; i < paymentTimestamps.length; i++) {
+                if(paymentTimestamps[i] < _latestTimestamp) _latestTimestamp = paymentTimestamps[i];
+            }
+            latestTimestamp = _latestTimestamp;
+            var table = document.getElementById("paymentsTable");
+            for(var i = 0; i < paymentTimestamps.length; i++) {
+                var date = new Date(paymentTimestamps[i] * 1000)
+                var year = date.getFullYear();
+                var month = "0" + (date.getMonth() + 1);
+                var day = "0" + date.getDate();
+                var hours = "0" + date.getHours();
+                var minutes = "0" + date.getMinutes();
+                var seconds = "0" + date.getSeconds();
+                var formattedTime = year + "/" + month.substr(-2) + "/" + day.substr(-2) + " - " + hours.substr(-2) + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+                table.innerHTML += '<tr><td style="width: 200px;">' + formattedTime + '</td><td>' + paymentData[i][0] + '</td><td style="width: 120px;">' + (paymentData[i][1] / stats.config.denominationUnit + " UPX") + '</td></tr>';
+            }
+        });
     });
+    clearInterval(autoRefresh);
 });
 
 updatePaymentsTable();
-setInterval(updatePaymentsTable, 10000);
+var autoRefresh = setInterval(updatePaymentsTable, 10000);

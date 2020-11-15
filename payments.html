@@ -118,7 +118,20 @@
                                 <div class="card">
                                     <h5 class="card-header">Payments</h5>
                                     <div class="card-body p-0">
-                                        <ul class="traffic-sales list-group list-group-flush" id="blocksTable"></ul>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                              <thead>
+                                                <tr>
+                                                  <th scope="col">Date</th>
+                                                  <th scope="col">Transaction Hash</th>
+                                                  <th scope="col">Amount</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody id="paymentsTable">
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
