@@ -9,10 +9,14 @@ function updateAPI() {
         document.getElementById("poolCurrentEffort").innerHTML = (data.pool.roundHashes / data.network.difficulty * 100).toFixed(1) + "%";
         document.getElementById("poolLastReward").innerHTML = data.lastblock.reward / 100 + " UPX";
 
-        var currentTime = Math.floor(Date.now() / 1000); 
-        var nextPayoutTime = Math.floor(data.pool.payments[1] / 1000);
-        while(nextPayoutTime < currentTime) { nextPayoutTime += data.config.paymentsInterval; }
-        document.getElementById("poolNextPayout").innerHTML = secondsToHm(nextPayoutTime - currentTime);
+        var blockTimestamps = [];
+        for(var i = 1; i < data.pool.blocks.length; i+=2) {
+            blockTimestamps.push(parseInt(data.pool.blocks[i]));
+        }
+        blockTimestamps.sort(function(a, b){return b-a});
+        for(var i = 0; i < data.pool.blocks.length; i+=2) {
+            if(parseInt(data.pool.blocks[i+1]) == blockTimestamps[0]) document.getElementById("poolLastBlock").innerHTML = secondsToHm(Date.now() / 1000 - data.pool.blocks[i].split(':')[3]) + "ago";
+        }
 
         //Network stats
         document.getElementById("networkDifficulty").innerHTML = readableNumber(data.network.difficulty);
@@ -43,7 +47,7 @@ function updateAPI() {
             tooltipFormat: '',
             cursor: '',
             highlightLineColor: '',
-            highlightSpotColor: ''
+            highlightSpotColor: '',
 
         });
 
