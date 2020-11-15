@@ -21,15 +21,24 @@ function updateBlocksTable() {
         for(var i = 0; i < blocks.length; i++) {
             if(i % 2 == 0) {
                 var arr = [];
-                if(blocks[i].split(':').length == 8) {
-                    arr = blocks[i].split(':');
-                }
-                else {
+                if(blocks[i].split(':')[6] == 1) {
                     var temp = blocks[i].split(':');
                     temp.pop();
+                    temp.push("1");
                     temp.push("0");
-                    temp.push("Waiting...");
                     arr = temp;
+                }
+                else {
+                    if(blocks[i].split(':').length == 8) {
+                        arr = blocks[i].split(':');
+                    }
+                    else {
+                        var temp = blocks[i].split(':');
+                        temp.pop();
+                        temp.push("0");
+                        temp.push("Waiting...");
+                        arr = temp;
+                    }
                 }
                 blockData.push(arr.concat(blocks[i + 1]));
             }
@@ -47,7 +56,7 @@ function updateBlocksTable() {
             var minutes = "0" + date.getMinutes();
             var seconds = "0" + date.getSeconds();
             var formattedTime = year + "/" + month.substr(-2) + "/" + day.substr(-2) + " - " + hours.substr(-2) + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-            table.innerHTML += "<tr>" + td(formattedTime) + td(blockData[i][8]) + td(blockData[i][7] === undefined ? "Waiting..." : blockData[i][7]) + td(blockData[i][2]) + td((blockData[i][0] == "solo" ? "Solo" : "Prop")) + td(blockData[i][1]) + td((blockData[i][5] / blockData[i][4] * 100).toFixed(0) + "%") + td((blockData[i][9] + data.config.depth <= data.network.height) ? "Confirmed" : blockStatus(data.network.height, blockData[i][8], data.config.depth)) + "</tr>";
+            table.innerHTML += "<tr>" + td(formattedTime) + td(blockData[i][8]) + td(blockData[i][7]) + td(blockData[i][2]) + td((blockData[i][0] == "solo" ? "Solo" : "Prop")) + td(blockData[i][1]) + td((blockData[i][5] / blockData[i][4] * 100).toFixed(0) + "%") + td(blockData[i][6] == 1 ? "Orphaned" : (blockData[i][9] + data.config.depth <= data.network.height) ? "Confirmed" : blockStatus(data.network.height, blockData[i][8], data.config.depth)) + "</tr>";
             if(blockData[i][8] < oldestBlockDisplayed) oldestBlockDisplayed = blockData[i][8];
         }
 
