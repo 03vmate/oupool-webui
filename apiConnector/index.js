@@ -1,7 +1,7 @@
 function updateAPI() {
     fetch(poolApiUrl + "/stats").then(Response => Response.json()).then(data => {
         //Pool stats
-        document.getElementById("poolHashrate").innerHTML = convertHashes(data.pool.hashrate);
+        document.getElementById("poolHashrate").innerHTML = convertHashes(data.pool.hashrate + data.pool.hashrateSolo);
         document.getElementById("poolWorkers").innerHTML = data.pool.workers;
         document.getElementById("poolBlocksFound").innerHTML = data.pool.totalBlocks;
         document.getElementById("poolBlocksFoundSolo").innerHTML = data.pool.totalBlocksSolo;
