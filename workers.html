@@ -141,11 +141,19 @@
                             <div class="col-12">
                                 <div class="card">
                                     <h5 class="card-header" style="border-bottom: none;">Workers</h5>
-                                    <h6 class="card-header">Status &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Worker Name</h6>
-                                    <div class="card-body p-0">
-                                        <ul class="traffic-sales list-group list-group-flush" id="workerList">
-                                            
-                                        </ul>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                          <thead>
+                                            <tr>
+                                              <th scope="col" style="text-align: center;">Status</th>
+                                              <th scope="col">Worker Name</th>
+                                              <th scope="col">Hashrate</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody id="workersTable">
+                                          </tbody>
+                                        </table>
+                                      </div>
                                     </div>
                                 </div>
                             </div>
@@ -154,12 +162,21 @@
                             <div class="col-12">
                                 <div class="card">
                                     <h5 class="card-header" style="border-bottom: none;">Transactions</h5>
-                                    <h6 class="card-header">
-                                        Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Transaction Hash
-                                    </h6>
                                     <div class="card-body p-0">
-                                        <ul class="traffic-sales list-group list-group-flush" id="transactionList">
-                                        </ul>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                              <thead>
+                                                <tr>
+                                                  <th scope="col">Date</th>
+                                                  <th scope="col">Transaction Hash</th>
+                                                  <th scope="col">Amount</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody id="transactionTable">
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

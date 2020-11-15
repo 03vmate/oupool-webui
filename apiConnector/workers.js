@@ -48,16 +48,18 @@ function displayData() {
             document.getElementById("nextPayoutIn").innerHTML = secondsToHm(nextPayoutTime - currentTime);
             document.getElementById("totalPaid").innerHTML = data.stats.paid / stats.config.denominationUnit + " UPX";
             document.getElementById("roundContrib").innerHTML = (data.stats.roundScore * 100 / stats.pool.roundScore).toFixed(1) + "%";
-
-            document.getElementById("workerList").innerHTML = "";
-            for (var i = 0; i < data.workers.length; i++) {
-                var workerName = data.workers[i]["name"] == "undefined" ? "Nameless Worker" : data.workers[i]["name"];
-                var workerHashrate = convertHashes(data.workers[i]["hashrate"]) + "</span></li>";
-                var workerIcon = data.workers[i]["hashrate"] > 0 ? "fa-check" : "fa-times"
-                document.getElementById("workerList").innerHTML += "<li class=\"traffic-sales-content list-group-item \"><i class=\"fa " + workerIcon + " workersIcon\" style=\"margin-left: 12px;\"></i><span class=\"traffic-sales-name\" style=\"margin-left: 22px;\">" + workerName  + "</span><span class=\"traffic-sales-amount\">" + workerHashrate;
+            var workers = data.workers;
+            console.log(workers)
+            workers.sort(function(a, b) { return parseInt(a["hashrate"]) < parseInt(b["hashrate"]) ? 1 : -1});
+            document.getElementById("workersTable").innerHTML = "";
+            for (var i = 0; i < workers.length; i++) {
+                var workerName = workers[i]["name"] == "undefined" ? "Nameless Worker" : workers[i]["name"];
+                var workerHashrate = convertHashes(workers[i]["hashrate"]) + "</span></li>";
+                var workerIcon = workers[i]["hashrate"] > 0 ? "fa-check" : "fa-times"
+                document.getElementById("workersTable").innerHTML += '<tr><td style="width: 65px; text-align: center;"><a class="fa ' + workerIcon + '"></a></td><td>' + workerName + '</td><td style="width: 100px;">' + workerHashrate + '</td></tr>';
             }
 
-            document.getElementById("transactionList").innerHTML = "";
+            document.getElementById("transactionTable").innerHTML = "";
             var paymentTime = [];
             var paymentData = [];
             for (var i = 0; i < data.payments.length; i++) {
@@ -77,7 +79,7 @@ function displayData() {
                 var minutes = "0" + date.getMinutes();
                 var seconds = "0" + date.getSeconds();
                 var formattedTime = year + "/" + month.substr(-2) + "/" + day.substr(-2) + " - " + hours.substr(-2) + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-                document.getElementById("transactionList").innerHTML += "<li class=\"traffic-sales-content list-group-item \"><span class=\"traffic-sales-name\">" + formattedTime + "</span><span class=\"traffic-sales-name\" style=\"margin-left: 28px;\">" + paymentData[i][0] + "</span><span class=\"traffic-sales-amount\">" + paymentData[i][1] / stats.config.denominationUnit + " UPX" + "</span></li>";
+                document.getElementById("transactionTable").innerHTML += '<tr><td style="width: 200px;">' + formattedTime + '</td><td>' + paymentData[i][0] + '</td><td style="width: 120px;">' + paymentData[i][1] / stats.config.denominationUnit + " UPX" + '</td></tr>';
             }
         })
     });
