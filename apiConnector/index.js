@@ -47,8 +47,7 @@ function updateAPI() {
             tooltipFormat: '',
             cursor: '',
             highlightLineColor: '',
-            highlightSpotColor: '',
-
+            highlightSpotColor: ''
         });
 
         //Diff Chart
