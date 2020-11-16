@@ -94,7 +94,6 @@ document.getElementById("fetchMoreBlocks").addEventListener("click", function() 
                 }
             }
             blockData = blockData.sort(function(a, b) { return parseInt(a[8]) < parseInt(b[8]) ? 1 : -1});
-            oldestBlockDisplayed = 99999999999;
             var table = document.getElementById("blocksTable");
             for(var i = 0; i < blockData.length; i++) {
                 var date = new Date(blockData[i][3] * 1000)
