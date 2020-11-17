@@ -2,26 +2,47 @@ function updateAPI() {
     fetch(poolApiUrl + "/stats").then(Response => Response.json()).then(data => {
         //Pool stats
         document.getElementById("poolHashrate").innerHTML = convertHashes(data.pool.hashrate + data.pool.hashrateSolo);
-        document.getElementById("poolWorkers").innerHTML = data.pool.workers;
-        document.getElementById("poolBlocksFound").innerHTML = data.pool.totalBlocks;
-        document.getElementById("poolBlocksFoundSolo").innerHTML = data.pool.totalBlocksSolo;
-        document.getElementById("poolBlocksFoundEvery").innerHTML = data.pool.hashrate != 0 ? secondsToHm((((data.network.difficulty / data.config.coinDifficultyTarget) / data.pool.hashrate) * 120)) : "Never";
-        document.getElementById("poolCurrentEffort").innerHTML = (data.pool.roundHashes / data.network.difficulty * 100).toFixed(1) + "%";
-        document.getElementById("poolLastReward").innerHTML = data.lastblock.reward / 100 + " UPX";
-
-        var blockTimestamps = [];
-        for(var i = 1; i < data.pool.blocks.length; i+=2) {
-            blockTimestamps.push(parseInt(data.pool.blocks[i]));
-        }
-        blockTimestamps.sort(function(a, b){return b-a});
-        for(var i = 0; i < data.pool.blocks.length; i+=2) {
-            if(parseInt(data.pool.blocks[i+1]) == blockTimestamps[0]) document.getElementById("poolLastBlock").innerHTML = secondsToHm(Date.now() / 1000 - data.pool.blocks[i].split(':')[3]) + "ago";
-        }
-
-        //Network stats
         document.getElementById("networkDifficulty").innerHTML = readableNumber(data.network.difficulty);
+        document.getElementById("poolWorkers").innerHTML = data.pool.workers;
+
+        document.getElementById("blocksFound").innerHTML = data.pool.totalBlocks;
+        var blockHeights = [];
+        for(var i = 1; i < data.pool.blocks.length; i+=2) {
+            blockHeights.push(parseInt(data.pool.blocks[i]));
+        }
+        blockHeights.sort(function(a, b){return b-a});
+        mainLoop:
+        for(var i = 0; i < data.pool.blocks.length; i+=2) {
+            for(var h = 0; h < blockHeights.length; h++) {
+                if(parseInt(data.pool.blocks[i+1]) == blockHeights[h] && data.pool.blocks[i].split(':')[0] == "prop") {
+                    document.getElementById("lastBlockFound").innerHTML = secondsToHm(Date.now() / 1000 - data.pool.blocks[i].split(':')[3]) + "ago";
+                    break mainLoop;
+                }
+            }
+        }
+        document.getElementById("blocksFoundSolo").innerHTML = data.pool.totalBlocksSolo;
+        mainLoop:
+        for(var i = 0; i < data.pool.blocks.length; i+=2) {
+            for(var h = 0; h < blockHeights.length; h++) {
+                if(parseInt(data.pool.blocks[i+1]) == blockHeights[h] && data.pool.blocks[i].split(':')[0] == "solo") {
+                    document.getElementById("lastBlockFoundSolo").innerHTML = secondsToHm(Date.now() / 1000 - data.pool.blocks[i].split(':')[3]) + "ago";
+                    break mainLoop;
+                }
+            }
+        }
+
+        document.getElementById("blocksFoundEvery").innerHTML = data.pool.hashrate != 0 ? secondsToHm((((data.network.difficulty / data.config.coinDifficultyTarget) / data.pool.hashrate) * 120)) : "Never";
+        document.getElementById("currentEffort").innerHTML = (data.pool.roundHashes / data.network.difficulty * 100).toFixed(1) + "%";
+        document.getElementById("blocksFoundEverySolo").innerHTML = data.pool.hashrate != 0 ? secondsToHm((((data.network.difficulty / data.config.coinDifficultyTarget) / data.pool.hashrateSolo) * 120)) : "Never";
+        document.getElementById("activeWorkersSolo").innerHTML = data.pool.workersSolo;
+
+        document.getElementById("lastReward").innerHTML = data.lastblock.reward / 100 + " UPX";
+        var currentTime = Math.floor(Date.now() / 1000); 
+        var nextPayoutTime = Math.floor(data.pool.payments[1] / 1000);
+        while(nextPayoutTime < currentTime) { nextPayoutTime += data.config.paymentsInterval; }
+        document.getElementById("nextPayoutIn").innerHTML = secondsToHm(nextPayoutTime - currentTime);
         document.getElementById("networkHashrate").innerHTML = convertHashes(data.network.difficulty / data.config.coinDifficultyTarget); 
-        document.getElementById("networkHeight").innerHTML = readableNumber(data.network.height);
+        document.getElementById("blockchainHeight").innerHTML = readableNumber(data.network.height);
 
         //Hashrate Chart
         var hashrateLabels = [];

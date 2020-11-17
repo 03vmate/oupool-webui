@@ -119,37 +119,37 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Blocks Found</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1" id="poolBlocksFound"></h1>
+                                            <h1 class="mb-1" id="blocksFound"></h1>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <div class="card border-3 border-top border-top-primary">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Last Block Found</h5>
+                                        <div class="metric-value d-inline-block">
+                                            <h1 class="mb-1" id="lastBlockFound"></h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                <div class="card border-3 border-top border-top-green">
                                     <div class="card-body">
                                         <h5 class="text-muted">Blocks Found - Solo</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1" id="poolBlocksFoundSolo"></h1>
+                                            <h1 class="mb-1" id="blocksFoundSolo"></h1>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                                <div class="card border-3 border-top border-top-primary">
+                                <div class="card border-3 border-top border-top-green">
                                     <div class="card-body">
-                                        <h5 class="text-muted">Current Effort</h5>
+                                        <h5 class="text-muted">Last Block Found - Solo</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1" id="poolCurrentEffort"></h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                                <div class="card border-3 border-top border-top-primary">
-                                    <div class="card-body">
-                                        <h5 class="text-muted">Last Reward</h5>
-                                        <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1" id="poolLastReward"></h1>
+                                            <h1 class="mb-1" id="lastBlockFoundSolo"></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -161,7 +161,7 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Blocks Found Every</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1" id="poolBlocksFoundEvery"></h1>
+                                            <h1 class="mb-1" id="blocksFoundEvery"></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -169,9 +169,51 @@
                             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <div class="card border-3 border-top border-top-primary">
                                     <div class="card-body">
-                                        <h5 class="text-muted">Last Block Found</h5>
+                                        <h5 class="text-muted">Current Effort</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1" id="poolLastBlock"></h1>
+                                            <h1 class="mb-1" id="currentEffort"></h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                <div class="card border-3 border-top border-top-green">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Blocks Found Every - Solo</h5>
+                                        <div class="metric-value d-inline-block">
+                                            <h1 class="mb-1" id="blocksFoundEverySolo"></h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                <div class="card border-3 border-top border-top-green">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Active Workers - Solo</h5>
+                                        <div class="metric-value d-inline-block">
+                                            <h1 class="mb-1" id="activeWorkersSolo"></h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                <div class="card border-3 border-top border-top-primary">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Last Reward</h5>
+                                        <div class="metric-value d-inline-block">
+                                            <h1 class="mb-1" id="lastReward"></h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                <div class="card border-3 border-top border-top-orange">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Next Payout in</h5>
+                                        <div class="metric-value d-inline-block">
+                                            <h1 class="mb-1" id="nextPayoutIn"></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -191,7 +233,7 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Blockchain Height</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1" id="networkHeight"></h1>
+                                            <h1 class="mb-1" id="blockchainHeight"></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -209,14 +251,14 @@
                         </div>
                     </div>
                 </div>
+                <footer class="footer" style="background-color: #efeff6;">
+                    <div class="container" style="text-align: center;">
+                      <span>Official uPlexa Pool UI by Green#4747</span>
+                    </div>
+                </footer>
             </div>
         </div>
-        <footer class="footer">
-            <div class="container" style="text-align: center;">
-              <span>Official uPlexa Pool by Green#4747</span>
-            </div>
-        </footer>
-    </div>
+    </div>    
     <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
     <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
