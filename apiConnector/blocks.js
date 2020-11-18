@@ -14,7 +14,7 @@ function updateBlocksTable() {
     fetch(poolApiUrl + "/stats").then(Response => Response.json()).then(data => {
         document.getElementById("poolBlocksFound").innerHTML = data.pool.totalBlocks;
         document.getElementById("poolBlocksFoundSolo").innerHTML = data.pool.totalBlocksSolo;
-        document.getElementById("poolBlocksFoundEvery").innerHTML = data.pool.hashrate != 0 ? secondsToHm((((data.network.difficulty / data.config.coinDifficultyTarget) / data.pool.hashrate) * 120)) : "Never";
+        document.getElementById("poolBlocksFoundEvery").innerHTML = data.pool.hashrate != 0 ? secondsToHm((((data.network.difficulty / data.config.coinDifficultyTarget) / (data.pool.hashrate + data.pool.hashrateSolo)) * 120)) : "Never";
         document.getElementById("avgLuck").innerHTML = (data.pool.totalShares / data.pool.totalDiff * 100).toFixed(0) + "%";
         var blocks = data.pool.blocks;
         var blockData = [];
