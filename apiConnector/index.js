@@ -22,7 +22,6 @@ function updateAPI() {
         var currentTime = Math.floor(Date.now() / 1000); 
         var nextPayoutTime = Math.floor(data.pool.payments[1] / 1000);
         while(nextPayoutTime < currentTime) { nextPayoutTime += data.config.paymentsInterval; }
-        console.log(nextPayoutTime - currentTime)
         document.getElementById("nextPayoutIn").innerHTML = secondsToHm(nextPayoutTime - currentTime);
         document.getElementById("networkHashrate").innerHTML = convertHashes(data.network.difficulty / data.config.coinDifficultyTarget); 
         document.getElementById("blockchainHeight").innerHTML = readableNumber(data.network.height);
