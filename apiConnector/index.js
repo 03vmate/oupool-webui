@@ -154,7 +154,7 @@ function updateTopMiners() {
         var table = document.getElementById("topMinersTable");
         table.innerHTML = "";
         for(var i = 0; i < data.length; i++) {
-            table.innerHTML += '<tr><td>' + data[i].miner + '</td><td style="width: 100px;">' + data[i].hashrate + '</td></tr>';
+            table.innerHTML += '<tr><td>' + data[i].miner + '</td><td style="width: 100px;">' + convertHashes(data[i].hashrate) + '</td></tr>';
         }
     });
 }
