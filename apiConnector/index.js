@@ -11,35 +11,18 @@ function updateAPI() {
             blockHeights.push(parseInt(data.pool.blocks[i]));
         }
         blockHeights.sort(function(a, b){return b-a});
-        mainLoop:
-        for(var i = 0; i < data.pool.blocks.length; i+=2) {
-            for(var h = 0; h < blockHeights.length; h++) {
-                if(parseInt(data.pool.blocks[i+1]) == blockHeights[h] && data.pool.blocks[i].split(':')[0] == "prop") {
-                    document.getElementById("lastBlockFound").innerHTML = secondsToHm(Date.now() / 1000 - data.pool.blocks[i].split(':')[3]) + "ago";
-                    break mainLoop;
-                }
-            }
-        }
+        document.getElementById("lastBlockFound").innerHTML =secondsToHm((Date.now() - data.pool.lastBlockFound) / 1000) + "ago";
         document.getElementById("blocksFoundSolo").innerHTML = data.pool.totalBlocksSolo;
-        mainLoop:
-        for(var i = 0; i < data.pool.blocks.length; i+=2) {
-            for(var h = 0; h < blockHeights.length; h++) {
-                if(parseInt(data.pool.blocks[i+1]) == blockHeights[h] && data.pool.blocks[i].split(':')[0] == "solo") {
-                    document.getElementById("lastBlockFoundSolo").innerHTML = secondsToHm(Date.now() / 1000 - data.pool.blocks[i].split(':')[3]) + "ago";
-                    break mainLoop;
-                }
-            }
-        }
-
+        document.getElementById("lastBlockFoundSolo").innerHTML =secondsToHm((Date.now() - data.pool.lastBlockFoundSolo) / 1000) + "ago";
         document.getElementById("blocksFoundEvery").innerHTML = data.pool.hashrate != 0 ? secondsToHm((((data.network.difficulty / data.config.coinDifficultyTarget) / data.pool.hashrate) * 120)) : "Never";
         document.getElementById("currentEffort").innerHTML = (data.pool.roundHashes / data.network.difficulty * 100).toFixed(1) + "%";
-        document.getElementById("blocksFoundEverySolo").innerHTML = data.pool.hashrate != 0 ? secondsToHm((((data.network.difficulty / data.config.coinDifficultyTarget) / data.pool.hashrateSolo) * 120)) : "Never";
+        document.getElementById("blocksFoundEverySolo").innerHTML = data.pool.hashrateSolo != 0 ? secondsToHm((((data.network.difficulty / data.config.coinDifficultyTarget) / data.pool.hashrateSolo) * 120)) : "Never";
         document.getElementById("activeWorkersSolo").innerHTML = data.pool.workersSolo;
-
         document.getElementById("lastReward").innerHTML = data.lastblock.reward / 100 + " UPX";
         var currentTime = Math.floor(Date.now() / 1000); 
         var nextPayoutTime = Math.floor(data.pool.payments[1] / 1000);
         while(nextPayoutTime < currentTime) { nextPayoutTime += data.config.paymentsInterval; }
+        console.log(nextPayoutTime - currentTime)
         document.getElementById("nextPayoutIn").innerHTML = secondsToHm(nextPayoutTime - currentTime);
         document.getElementById("networkHashrate").innerHTML = convertHashes(data.network.difficulty / data.config.coinDifficultyTarget); 
         document.getElementById("blockchainHeight").innerHTML = readableNumber(data.network.height);
@@ -59,7 +42,7 @@ function updateAPI() {
             width: '99.5%',
             height: '100',
             lineColor: '#5969ff',
-            fillColor: '#dbdeff',
+            fillColor: '#222222',
             lineWidth: 2,
             spotColor: '',
             minSpotColor: '',
@@ -85,8 +68,8 @@ function updateAPI() {
             type: 'line',
             width: '99.5%',
             height: '100',
-            lineColor: '#ff407b',
-            fillColor: '#ffdbe6',
+            lineColor: '#ff0000',
+            fillColor: '#222222',
             lineWidth: 2,
             spotColor: '',
             minSpotColor: '',
@@ -113,7 +96,7 @@ function updateAPI() {
             width: '99.5%',
             height: '100',
             lineColor: '#25d5f2',
-            fillColor: '#dffaff',
+            fillColor: '#222222',
             lineWidth: 2,
             spotColor: '',
             minSpotColor: '',
@@ -150,8 +133,8 @@ function updatePriceGraph() {
             type: 'line',
             width: '99.5%',
             height: '100',
-            lineColor: '#fec957',
-            fillColor: '#fff2d5',
+            lineColor: '#ffa500',
+            fillColor: '#222222',
             lineWidth: 2,
             spotColor: '',
             minSpotColor: '',
@@ -168,20 +151,11 @@ function updatePriceGraph() {
 }
 
 function updateTopMiners() {
-    document.getElementById("topMiners").innerHTML = "";
     fetch(poolApiUrl + "/get_top10miners").then(Response => Response.json()).then(data => {
+        var table = document.getElementById("topMinersTable");
+        table.innerHTML = "";
         for(var i = 0; i < data.length; i++) {
-            var listElement = document.createElement("li");
-            listElement.className = "traffic-sales-content list-group-item";
-            var nameElement = document.createElement("span");
-            nameElement.className = "traffic-sales-name";
-            nameElement.appendChild(document.createTextNode(data[i].miner));
-            var valueElement = document.createElement("span");
-            valueElement.className = "traffic-sales-amount";
-            valueElement.appendChild(document.createTextNode(convertHashes(data[i].hashrate)));
-            listElement.appendChild(nameElement);
-            listElement.appendChild(valueElement);
-            document.getElementById("topMiners").appendChild(listElement);
+            table.innerHTML += '<tr><td>' + data[i].miner + '</td><td style="width: 100px;">' + data[i].hashrate + '</td></tr>';
         }
     });
 }

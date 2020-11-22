@@ -168,8 +168,8 @@ body {
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
-    color: #71748d;
-    background-color: #efeff6;
+    color: #bbbbbb;
+    background-color: #060606;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -179,7 +179,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: #3d405c;
+    color: #B4B5BF;
     margin: 0px 0px 15px 0px;
     font-family: 'Circular Std Medium';
 }
@@ -220,7 +220,7 @@ p:last-child {
 }
 
 a {
-    color: #71748d;
+    color: #bbbbbb;
 }
 
 a:hover {
@@ -234,11 +234,9 @@ a:hover {
     text-decoration: none;
 }
 
-ol,
-ul {}
-
-ol li,
-ul li {}
+ul, li {
+    background-color: #08091B;
+}
 
 .lead {
     font-size: 1.25rem;
@@ -256,7 +254,7 @@ label {
     max-width: 100%;
     margin-bottom: 5px;
     font-size: 15px;
-    color: #71748d;
+    color: #bbbbbb;
 }
 
 .form-control {
@@ -264,7 +262,7 @@ label {
     width: 100%;
     font-size: 14px;
     line-height: 1.42857143;
-    color: #71748d;
+    color: #bbbbbb;
     background-color: #fff;
     background-image: none;
     border: 1px solid #d2d2e4;
@@ -272,7 +270,7 @@ label {
 }
 
 .form-control:focus {
-    color: #71748d;
+    color: #bbbbbb;
     background-color: #fff;
     border-color: #a7a7f0;
     outline: 0;
@@ -280,7 +278,7 @@ label {
 }
 
 input[type=file] {
-    color: #71748d;
+    color: #bbbbbb;
     background-color: #fff;
     border-color: #a7a7f0;
     outline: 0;
@@ -300,7 +298,7 @@ button:focus {
 }
 
 select.form-control {
-    color: #71748d;
+    color: #bbbbbb;
     -webkit-appearance: none;
     -moz-appearance: none;
     background-position: 99% 52%;
@@ -314,7 +312,7 @@ select.form-control {
 
 textarea.form-control {
     height: auto;
-    color: #71748d;
+    color: #bbbbbb;
     background-color: #fff;
     background-image: none;
     border: 1px solid #d2d2e4;
@@ -323,7 +321,7 @@ textarea.form-control {
 }
 
 input::-webkit-input-placeholder {
-    color: #71748d !important;
+    color: #bbbbbb !important;
 }
 
 input:focus::-webkit-input-placeholder {
@@ -331,7 +329,7 @@ input:focus::-webkit-input-placeholder {
 }
 
 textarea::-webkit-input-placeholder {
-    color: #71748d !important;
+    color: #bbbbbb !important;
 }
 
 textarea:focus::-webkit-input-placeholder {
@@ -417,7 +415,7 @@ address {}
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-color: #ffffff;
+    background-color: #bbbbbb;
     border: 2px solid #d2d2e4;
 }
 
@@ -941,23 +939,23 @@ Borders
 }
 
 .border {
-    border: 1px solid #e6e6f2 !important;
+    border: 1px solid #333333 !important;
 }
 
 .border-top {
-    border-top: 1px solid #e6e6f2 !important;
+    border-top: 1px solid #333333 !important;
 }
 
 .border-bottom {
-    border-bottom: 1px solid #e6e6f2 !important;
+    border-bottom: 1px solid #333333 !important;
 }
 
 .border-left {
-    border-left: 1px solid #e6e6f2 !important;
+    border-left: 1px solid #333333 !important;
 }
 
 .border-right {
-    border-right: 1px solid #e6e6f2 !important
+    border-right: 1px solid #333333 !important
 }
 
 
@@ -998,7 +996,7 @@ Borders
 }
 
 .text-dark {
-    color: #3d405c !important;
+    color: #B4B5BF !important;
 }
 
 .text-gray {
@@ -1243,7 +1241,7 @@ Top Header
 
 .dashboard-header .navbar {
     padding: 0px;
-    border-bottom: 1px solid #e6e6f2;
+    border-bottom: 1px solid #333333;
     -webkit-box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.13);
     box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.13);
     -webkit-transition: all 0.3s ease;
@@ -1269,7 +1267,7 @@ Top Header
 .navbar-right-top {}
 
 .navbar-right-top .nav-item {
-    border-right: 1px solid #e6e6f2;
+    border-right: 1px solid #333333;
 }
 
 .navbar-right-top .nav-item:last-child {
@@ -1309,7 +1307,7 @@ Top Header
 
 .notification-title {
     font-size: 14px;
-    color: #3d405c;
+    color: #B4B5BF;
     text-align: center;
     padding: 8px 0px;
     border-bottom: 1px solid #e3e3e3;
@@ -1329,7 +1327,7 @@ Top Header
 
 .notification-list .list-group-item.active {
     z-index: 2;
-    color: #3d405c;
+    color: #B4B5BF;
     background-color: #f7f7fb;
     border-color: #e1e1e7;
 }
@@ -1350,7 +1348,7 @@ Top Header
     font-size: 11px;
     margin-top: 4px;
     text-transform: uppercase;
-    color: #71748d;
+    color: #bbbbbb;
 }
 
 .notification .dropdown-toggle::after,
@@ -1455,7 +1453,7 @@ Top Header
     padding: 12px 7px 4px;
     display: block;
     border: 1px solid transparent;
-    color: #3d405c;
+    color: #B4B5BF;
     font-size: 12px;
 }
 
@@ -1465,7 +1463,7 @@ Top Header
 
 .connection-item:hover {
     background-color: #fff;
-    border: 1px solid #e6e6f2;
+    border: 1px solid #333333;
 }
 
 .connection-item span {
@@ -1625,19 +1623,19 @@ Top Header
 .navigation-horizontal .navbar-nav .nav-link:focus,
 .navigation-horizontal .navbar-nav .nav-link.active {
     background-color: #e2e2eb;
-    color: #3d405c;
+    color: #B4B5BF;
     border-radius: 2px;
 }
 
 .navigation-horizontal .navbar-nav .nav-link:focus,
 .navigation-horizontal .navbar-nav .nav-link:hover {
     background-color: #e2e2eb;
-    color: #3d405c;
+    color: #B4B5BF;
     border-radius: 2px;
 }
 
 .navigation-horizontal .submenu .nav .nav-item .nav-link:hover {
-    color: #3d405c;
+    color: #B4B5BF;
     border-radius: 2px;
     background-color: transparent;
 }
@@ -1748,19 +1746,19 @@ Left Navigation Sidebar
 .nav-left-sidebar .navbar-nav .nav-link:focus,
 .nav-left-sidebar .navbar-nav .nav-link.active {
     background-color: #e2e2eb;
-    color: #3d405c;
+    color: #B4B5BF;
     border-radius: 2px;
 }
 
 .nav-left-sidebar .navbar-nav .nav-link:focus,
 .nav-left-sidebar .navbar-nav .nav-link:hover {
     background-color: #e2e2eb;
-    color: #3d405c;
+    color: #B4B5BF;
     border-radius: 2px;
 }
 
 .nav-left-sidebar .submenu .nav .nav-item .nav-link:hover {
-    color: #3d405c;
+    color: #B4B5BF;
     border-radius: 2px;
     background-color: transparent;
 }
@@ -1914,8 +1912,8 @@ Sidebar Page Navigations
 .dropdown-menu {
     background: #fff;
     font-size: 14px;
-    color: #3d405c;
-    border: 1px solid #e6e6f2;
+    color: #B4B5BF;
+    border: 1px solid #333333;
 }
 
 .dropdown-item {
@@ -1924,7 +1922,7 @@ Sidebar Page Navigations
     padding: .25rem 1.5rem;
     clear: both;
     font-weight: 400;
-    color: #3d405c;
+    color: #B4B5BF;
     text-align: inherit;
     white-space: nowrap;
     background-color: transparent;
@@ -2079,7 +2077,7 @@ Pageheader
 .footer {
     border-top: 1px solid rgba(152, 166, 173, .2);
     padding: 14px 30px 14px;
-    color: #71748d;
+    color: #bbbbbb;
     background-color: #fff;
     width: 100%;
     /*position: absolute; bottom: 0;*/
@@ -2088,7 +2086,7 @@ Pageheader
 .footer-links {}
 
 .footer .footer-links a {
-    color: #71748d;
+    color: #bbbbbb;
     margin-left: 1.5rem;
     -webkit-transition: all .4s;
     transition: all .4s;
@@ -2104,7 +2102,7 @@ Pageheader
 }
 
 .chart-widget-list p {
-    border-bottom: 1px solid #e6e6f2;
+    border-bottom: 1px solid #333333;
     margin-bottom: 8px;
     padding-bottom: 8px;
 }
@@ -2162,7 +2160,7 @@ Pageheader
 .influencer-profile-data .user-social-media {
     padding: 16px 99px;
     text-align: center;
-    border-right: 1px solid #e6e6f2;
+    border-right: 1px solid #333333;
 }
 
 .influencer-profile-data .user-social-media:last-child {
@@ -2207,7 +2205,7 @@ Pageheader
 .influence-finder .user-social-media {
     padding: 16px 68px;
     text-align: center;
-    border-right: 1px solid #e6e6f2;
+    border-right: 1px solid #333333;
 }
 
 .influence-finder .user-social-media:last-child {
@@ -2320,7 +2318,7 @@ Pageheader
 
 .traffic-sales-amount {
     float: right;
-    color: #3d405c;
+    color: #B4B5BF;
     margin-left: 20px;
 }
 
@@ -2340,7 +2338,7 @@ Pageheader
    Ecommerce Products
    ========================================================================== */
 
-.product-thumbnail{ border:1px solid #e6e6f2; background-color: #fff; margin-bottom: 30px; }
+.product-thumbnail{ border:1px solid #333333; background-color: #fff; margin-bottom: 30px; }
 .product-img{ text-align: center; padding: 35px 0px;  }
 .product-img-head{position: relative;}
 .ribbons{
@@ -2373,17 +2371,17 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
     top: 15px;}
     .product-wishlist-btn:hover{border-color: #ff3367; color: #ff3367;transition: 0.3s ease;}
     .product-wishlist-btn.active{border-color: #ff3367; color: #ff3367;transition: 0.3s ease;}
-.product-content{ border-top:1px solid #e6e6f2; padding: 23px;}
+.product-content{ border-top:1px solid #333333; padding: 23px;}
 .product-content-head{ position: relative; margin-bottom: 25px; }
 .product-title{font-size: 16px; margin-bottom: 5px;}
 .product-rating{font-size: 12px;
 
     color: #ffa811;}
-.product-price{ position: absolute; top: 0; right: 0; font-size: 16px; color: #3d405c;font-family: 'Circular Std Medium'; line-height: 1;}
+.product-price{ position: absolute; top: 0; right: 0; font-size: 16px; color: #B4B5BF;font-family: 'Circular Std Medium'; line-height: 1;}
 .product-btn{}
-.product-del{font-size: 14px; color: #71748d;}
-.product-sidebar{ background-color: #fff; border:1px solid #e6e6f2;  }
-.product-sidebar-widget{border-bottom: 1px solid #e6e6f2; padding: 10px 20px; margin-bottom: 10px;}
+.product-del{font-size: 14px; color: #bbbbbb;}
+.product-sidebar{ background-color: #fff; border:1px solid #333333;  }
+.product-sidebar-widget{border-bottom: 1px solid #333333; padding: 10px 20px; margin-bottom: 10px;}
 .product-sidebar-widget:last-child{border:0px;}
 .product-sidebar-widget-title{font-size: 16px; margin-bottom: 10px;}
 
@@ -2566,7 +2564,7 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
 .quantity-button {
   position: relative;
   cursor: pointer;
-  border-left: 1px solid #e6e6f2;
+  border-left: 1px solid #333333;
   width: 20px;
   text-align: center;
   color: #333;
@@ -2588,7 +2586,7 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
   position: absolute;
   height: 50%;
   top: 0;
-  border-bottom: 1px solid #e6e6f2;
+  border-bottom: 1px solid #333333;
 }
 
 .quantity-button.quantity-down {
@@ -2637,7 +2635,7 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
     padding: 5px 3px;
     display: inline-block;
     font-size: 14px;
-    color: #3d405c;
+    color: #B4B5BF;
     text-align: center;
     line-height: 1.7;
 }
@@ -3083,18 +3081,18 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
 .btn-outline-light {
     color: #7171a6;
     background-color: transparent;
-    border-color: #e6e6f2;
+    border-color: #333333;
 }
 
 .btn-outline-light:hover {
-    color: #71748d;
+    color: #bbbbbb;
     background-color: #f0f0f8;
     border-color: #cacae0;
 }
 
 .btn-outline-light.focus,
 .btn-outline-light:focus {
-    color: #71748d;
+    color: #bbbbbb;
     background-color: #f0f0f8;
     border-color: #cacae0;
     box-shadow: 0 0 0 1px rgb(235, 235, 237);
@@ -3224,6 +3222,7 @@ btn-link
 .card {
     margin-bottom: 30px;
     border: none;
+    background-color: #161616;
     -webkit-box-shadow: 0px 1px 2px 1px rgba(154, 154, 204, 0.22);
     -moz-box-shadow: 0px 1px 2px 1px rgba(154, 154, 204, 0.22);
     box-shadow: 0px 1px 2px 1px rgba(154, 154, 204, 0.22);
@@ -3231,7 +3230,7 @@ btn-link
 
 .card-header {
     background-color: #fff;
-    border-bottom: 1px solid #e6e6f2;
+    border-bottom: 1px solid #333333;
 }
 
 .card-title {}
@@ -3245,7 +3244,7 @@ btn-link
 .card-text {}
 
 .card-footer {
-    border-top: 1px solid #e6e6f2;
+    border-top: 1px solid #333333;
     background: #f6f6ff;
 }
 
@@ -3580,7 +3579,7 @@ btn-link
 .tab-regular .nav.nav-tabs .nav-link {
     display: block;
     padding: 17px 49px;
-    color: #71748d;
+    color: #bbbbbb;
     background-color: #dddde8;
     margin-right: 5px;
     border-color: #dddde8;
@@ -3591,14 +3590,14 @@ btn-link
 
 .tab-regular .nav-tabs .nav-link.active {
     background-color: #fff;
-    border-color: #e6e6f2 #e6e6f2 #fff;
+    border-color: #333333 #333333 #fff;
     color: #5969ff;
 }
 
 .tab-regular .tab-content {
     background-color: #fff;
     padding: 30px;
-    border: 1px solid #e6e6f2;
+    border: 1px solid #333333;
     border-radius: 4px;
     border-top-left-radius: 0px
 }
@@ -3625,7 +3624,7 @@ btn-link
     border-top-right-radius: .25rem;
     background: #fff;
     padding: 17px 49px;
-    color: #71748d;
+    color: #bbbbbb;
     background-color: #dddde8;
     -webkit-border-radius: 4px 0px 0px 4px;
     -moz-border-radius: 4px 0px 0px 4px;
@@ -3665,7 +3664,7 @@ btn-link
 .tab-outline .nav.nav-tabs .nav-item .nav-link {
     display: block;
     padding: 17px 49px;
-    color: #71748d;
+    color: #bbbbbb;
     background-color: #e9e9f2;
     border-color: #c4c4cf #c4c4cf #c4c4cf;
     margin-right: 3px;
@@ -3714,7 +3713,7 @@ btn-link
     border-top-right-radius: .25rem;
     background: #fff;
     padding: 17px 49px;
-    color: #71748d;
+    color: #bbbbbb;
     background-color: #e9e9f2;
     -webkit-border-radius: 4px 0px 0px 4px;
     -moz-border-radius: 4px 0px 0px 4px;
@@ -3758,14 +3757,14 @@ btn-link
 }
 
 .simple-card .nav.nav-tabs {
-    border-bottom: 1px solid #e6e6f2;
+    border-bottom: 1px solid #333333;
 }
 
 .simple-card .nav.nav-tabs .nav-item {}
 
 .simple-card .nav.nav-tabs .nav-item .nav-link {
     padding: 17px 49px;
-    color: #71748d;
+    color: #bbbbbb;
     background: #f8f8fb;
     border-color: #e9e9f2 #e9e9f2 #e9e9f2;
     margin-right: -1px;
@@ -3799,7 +3798,7 @@ btn-link
 
 .simple-outline-card .nav.nav-tabs .nav-item .nav-link {
     padding: 17px 49px;
-    color: #71748d;
+    color: #bbbbbb;
     background: #e9e9f2;
     border-color: #c4c4cf #c4c4cf #c4c4cf;
     margin-right: -1px;
@@ -3832,7 +3831,7 @@ Pills Regular
     background-color: #dddde8;
     padding: 14px 26px;
     margin-right: 3px;
-    color: #71748d;
+    color: #bbbbbb;
     font-size: 16px;
     margin-bottom: 4px;
 }
@@ -3863,7 +3862,7 @@ Pills Outline
     background-color: transparent;
     padding: 16px 52px;
     margin-right: 3px;
-    color: #71748d;
+    color: #bbbbbb;
     border: 1px solid #c4c4cf;
 }
 
@@ -3892,7 +3891,7 @@ Pills vertical
     background-color: #dddde8;
     padding: 16px 52px;
     margin-bottom: 4px;
-    color: #71748d;
+    color: #bbbbbb;
 }
 
 .pills-vertical .nav.nav-pills .nav-link.active {
@@ -3932,7 +3931,7 @@ Pills vertical
 }
 
 .accrodion-regular .card .card-header .btn-link {
-    color: #3d405c;
+    color: #B4B5BF;
     text-decoration: none;
 }
 
@@ -3967,7 +3966,7 @@ Pills vertical
 }
 
 .accrodion-outline .card .card-header .btn-link {
-    color: #3d405c;
+    color: #B4B5BF;
     text-decoration: none;
 }
 
@@ -3991,7 +3990,7 @@ Pills vertical
     display: block;
     padding: 16px 20px;
     margin-bottom: -1px;
-    border: 1px solid #e6e6f2;
+    border: 1px solid #333333;
 }
 
 
@@ -4164,9 +4163,9 @@ Pills vertical
     margin-left: 0px;
     margin-right: 5px;
     line-height: 1.25;
-    color: #71748d;
+    color: #bbbbbb;
     background-color: #fff;
-    border: 1px solid #e6e6f2;
+    border: 1px solid #333333;
     border-radius: 3px;
     line-height: 1;
 }
@@ -4520,28 +4519,28 @@ Pills vertical
 .table th {
     padding: 10px;
     vertical-align: middle;
-    border-top: 1px solid #e6e6f2;
+    border-top: 1px solid #333333;
     font-weight: normal;
 }
 
 .table thead th {
     vertical-align: bottom;
-    border-bottom: 2px solid #e6e6f2;
+    border-bottom: 2px solid #333333;
 }
 
 .table thead th,
 .table th {
-    color: #3d405c;
+    color: #B4B5BF;
     font-family: 'Circular Std Medium';
 }
 
 .table-bordered {
-    border: 1px solid #e6e6f2;
+    border: 1px solid #333333;
 }
 
 .table-bordered td,
 .table-bordered th {
-    border: 1px solid #e6e6f2;
+    border: 1px solid #333333;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -4991,7 +4990,7 @@ Vertical Timeline - by CodyHouse.co
 
 .error-section-content {
     padding-top: 30px;
-    color: #3d405c;
+    color: #B4B5BF;
     padding-bottom: 30px;
 }
 
@@ -5797,15 +5796,14 @@ Vertical Timeline - by CodyHouse.co
 /*------------------------
 7.1  Inbox
 ----------------------------*/
-
 .page-aside {
-    background: none repeat scroll 0 0 #ffffff;
+    background: none repeat scroll 0 0 #bbbbbb;
     width: 280px;
     height: 100%;
     position: fixed;
     top: 0;
     left: 265px;
-    border-right: 1px solid #e6e6f2;
+    border-right: 1px solid #333333;
     margin-top: 61px;
     padding-bottom: 61px;
     color: #404040;
@@ -5844,7 +5842,7 @@ Vertical Timeline - by CodyHouse.co
     text-align: center;
     min-width: 19px;
     margin-right: 6px;
-    color: #71748d;
+    color: #bbbbbb;
 }
 
 .aside-nav .nav li.active a {
@@ -5862,11 +5860,11 @@ Vertical Timeline - by CodyHouse.co
     font-size: 27px;
     line-height: 27px;
     font-weight: 300;
-    color: #3d405c;
+    color: #B4B5BF;
 }
 
 .aside-header .description {
-    color: #71748d;
+    color: #bbbbbb;
     margin: 0;
 }
 
@@ -5889,7 +5887,7 @@ Vertical Timeline - by CodyHouse.co
 }
 
 .aside-nav .nav li a {
-    color: #71748d;
+    color: #bbbbbb;
     padding: 10px 20px;
 }
 
@@ -5918,7 +5916,7 @@ Vertical Timeline - by CodyHouse.co
     margin-right: 7px;
     font-size: 1.154rem;
     vertical-align: middle;
-    color: #3d405c;
+    color: #B4B5BF;
 }
 
 .aside-nav .nav li .badge {
@@ -5930,7 +5928,7 @@ Vertical Timeline - by CodyHouse.co
 
 .aside-nav .title {
     display: block;
-    color: #3d405c;
+    color: #B4B5BF;
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
@@ -5967,7 +5965,7 @@ Vertical Timeline - by CodyHouse.co
 
 .email-title .new-messages {
     font-size: 1rem;
-    color: #3d405c;
+    color: #B4B5BF;
     margin-left: 3px;
 }
 
@@ -5990,11 +5988,11 @@ Vertical Timeline - by CodyHouse.co
 
 .email-filters {
     padding: 20px;
-    border-bottom: 1px solid #e6e6f2;
+    border-bottom: 1px solid #333333;
     background-color: #fff;
     display: table;
     width: 100%;
-    border-top: 1px solid #e6e6f2;
+    border-top: 1px solid #333333;
 }
 
 
@@ -6045,7 +6043,7 @@ Vertical Timeline - by CodyHouse.co
 }
 
 .email-list-item {
-    border-bottom: 1px solid #e6e6f2;
+    border-bottom: 1px solid #333333;
     padding: 10px 20px;
     display: table;
     width: 100%;
@@ -6056,18 +6054,18 @@ Vertical Timeline - by CodyHouse.co
 }
 
 .email-list-item--unread {
-    background-color: #ffffff;
+    background-color: #bbbbbb;
 }
 
 .email-list-item--unread .from,
 .email-list-item--unread .msg {
-    color: #3d405c;
+    color: #B4B5BF;
     font-weight: 800;
     -webkit-font-smoothing: initial;
 }
 
 .email-list-item--unread .msg {
-    color: #3d405c;
+    color: #B4B5BF;
 }
 
 .email-list-actions {
@@ -6125,14 +6123,14 @@ Vertical Timeline - by CodyHouse.co
 
 .email-head-subject {
     padding: 25px 25px;
-    border-bottom: 1px solid #e6e6f2;
+    border-bottom: 1px solid #333333;
 }
 
 .email-head-subject .title {
     display: block;
     font-size: 1.769rem;
     font-weight: 300;
-    color: #3d405c;
+    color: #B4B5BF;
 }
 
 .email-head-subject .title>a.active .icon {
@@ -6198,14 +6196,14 @@ Vertical Timeline - by CodyHouse.co
 
 .email-body {
     background-color: #fff;
-    border-top: 1px solid #e6e6f2;
+    border-top: 1px solid #333333;
     padding: 30px 28px;
 }
 
 .email-attachments {
     background-color: #fff;
     padding: 25px 28px;
-    border-top: 1px solid #e6e6f2;
+    border-top: 1px solid #333333;
 }
 
 .email-attachments .title {
@@ -6249,10 +6247,10 @@ Vertical Timeline - by CodyHouse.co
 
 .email-head-title {
     padding: 25px 25px;
-    border-bottom: 1px solid #e6e6f2;
+    border-bottom: 1px solid #333333;
     display: block;
     font-weight: 400;
-    color: #3d405c;
+    color: #B4B5BF;
     font-size: 1.769rem;
 }
 
@@ -6269,7 +6267,7 @@ Vertical Timeline - by CodyHouse.co
 
 .email-compose-fields {
     background-color: #fff;
-    border-bottom: 1px solid #e6e6f2;
+    border-bottom: 1px solid #333333;
     padding: 30px 30px 20px;
 }
 
@@ -6409,7 +6407,7 @@ Vertical Timeline - by CodyHouse.co
 }
 
 .dashboard-main-wrapper .content-container>.chat-module .chat-item:not(:last-child) {
-    border-bottom: 1px solid #e6e6f2;
+    border-bottom: 1px solid #333333;
 }
 
 .dashboard-main-wrapper .content-container>.chat-module .chat-item .media-body {
@@ -6541,7 +6539,7 @@ Vertical Timeline - by CodyHouse.co
     height: 100%;
     overflow: hidden;
     width: 384px;
-    border-left: 1px solid #e6e6f2;
+    border-left: 1px solid #333333;
     display: flex;
     flex-direction: column;
     background: #fff;
@@ -6787,7 +6785,7 @@ Media Query
     .influencer-profile-data .user-social-media {
     padding: 16px 56px;
     text-align: center;
-    border-right: 1px solid #e6e6f2;
+    border-right: 1px solid #333333;
 }
 }
 @media only screen and (max-width:1200px) {.product-price{position: initial;}.product-slider{padding: 131px 30px;}
@@ -6861,13 +6859,13 @@ Media Query
 
     /* Inbox */
     .page-aside {
-        background: none repeat scroll 0 0 #ffffff;
+        background: none repeat scroll 0 0 #bbbbbb;
         width: 280px;
         height: 100%;
         position: absolute;
         top: 0;
         left: 0;
-        border-right: 1px solid #e6e6f2;
+        border-right: 1px solid #333333;
         margin-top: 0;
         padding-bottom: 0px;
         color: #404040;
@@ -6932,7 +6930,7 @@ Media Query
         margin-top: 0px;
         padding-bottom: 0px;
         color: #404040;
-        border-bottom: 1px solid #e6e6f2;
+        border-bottom: 1px solid #333333;
     }
     .aside-nav.collapse {
         display: none;

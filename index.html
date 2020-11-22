@@ -149,7 +149,7 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Last Block Found - Solo</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1" id="lastBlockFoundSolo"></h1>
+                                            <h1 class="mb-1" id="lastBlockFoundSolo">Unknown</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -242,16 +242,20 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
-                                    <h5 class="card-header"> Top Miners</h5>
-                                    <div class="card-body p-0">
-                                        <ul class="traffic-sales list-group list-group-flush" id="topMiners"></ul>
+                                    <h5 class="card-header" style="border-bottom: none; background-color: #161616;">Top Miners</h5>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                          <tbody id="topMinersTable">
+                                          </tbody>
+                                        </table>
+                                      </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <footer class="footer" style="background-color: #efeff6;">
+                <footer class="footer" style="background-color: #060606;">
                     <div class="container" style="text-align: center;">
                       <span>Official uPlexa Pool UI by Green#4747</span>
                     </div>
