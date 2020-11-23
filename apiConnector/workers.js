@@ -1,10 +1,9 @@
 document.getElementById("boxButton").addEventListener("click", function() {
     fetch(poolApiUrl + "/stats_address?address=" + document.getElementById("addressBox").value).then(Response => Response.json()).then(data => {
         if(data.error != "Not found") {
-            document.cookie = "addr=" + document.getElementById("addressBox").value + ";";
             var now = new Date();
             now.setFullYear(2200);
-            document.cookie = "expires=" + now.toUTCString() + ";";
+            document.cookie = "addr=" + document.getElementById("addressBox").value + ";" + "expires=" + now.toUTCString() + ";";
             displayData();
             autoRefresh();
         }
