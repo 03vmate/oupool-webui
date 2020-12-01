@@ -18,7 +18,7 @@ function updateAPI() {
         document.getElementById("currentEffort").innerHTML = (data.pool.roundHashes / data.network.difficulty * 100).toFixed(1) + "%";
         document.getElementById("blocksFoundEverySolo").innerHTML = data.pool.hashrateSolo != 0 ? secondsToHm((((data.network.difficulty / data.config.coinDifficultyTarget) / data.pool.hashrateSolo) * 120)) : "Never";
         document.getElementById("activeWorkersSolo").innerHTML = data.pool.workersSolo;
-        document.getElementById("lastReward").innerHTML = data.lastblock.reward / 100 + " UPX";
+        document.getElementById("lastReward").innerHTML = data.lastblock.reward / data.config.denominationUnit + " UPX";
         var currentTime = Math.floor(Date.now() / 1000); 
         var nextPayoutTime = Math.floor(data.pool.payments[1] / 1000);
         while(nextPayoutTime < currentTime) { nextPayoutTime += data.config.paymentsInterval; }
@@ -111,8 +111,11 @@ function updateAPI() {
 }
 
 function updatePrice() {
-    fetch(cgApi).then(Response => Response.json()).then(data => {
-        document.getElementById("coinPrice").innerHTML = "$" + data.market_data.current_price.usd;
+    fetch(poolApiUrl + "/stats").then(Response => Response.json()).then(stats => {
+        fetch(cgApi).then(Response => Response.json()).then(data => {
+            document.getElementById("coinPrice").innerHTML = "$" + data.market_data.current_price.usd;
+            document.getElementById("lastRewardUSD").innerHTML = "$" + (data.market_data.current_price.usd * (stats.lastblock.reward / stats.config.denominationUnit)).toFixed(2);
+        });
     });
 }
 
