@@ -6,19 +6,19 @@ function convertHashes (hashes) {
         return (hashes / 1e3).toFixed(1) + " kH/s"
     }
     else if (hashes > 1e6 && hashes < 1e9) {
-        return (hashes / 1e6).toFixed(1) + " MH/s"
+        return (hashes / 1e6).toFixed(2) + " MH/s"
     }
     else if (hashes > 1e9 && hashes < 1e12) {
-        return (hashes / 1e9).toFixed(1) + " GH/s"
+        return (hashes / 1e9).toFixed(2) + " GH/s"
     }
     else if (hashes > 1e12 && hashes < 1e15) {
-        return (hashes / 1e12).toFixed(1) + " TH/s"
+        return (hashes / 1e12).toFixed(2) + " TH/s"
     }
     else if (hashes > 1e15 && hashes < 1e18) {
-        return (hashes / 1e15).toFixed(1) + " PH/s"
+        return (hashes / 1e15).toFixed(2) + " PH/s"
     }
     else if (hashes > 1e18 && hashes < 1e21) {
-        return (hashes / 1e18).toFixed(1) + " EH/s"
+        return (hashes / 1e18).toFixed(2) + " EH/s"
     }
 }
 
