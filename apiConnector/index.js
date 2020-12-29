@@ -3,7 +3,7 @@ function updateAPI() {
         //Pool stats
         document.getElementById("poolHashrate").innerHTML = convertHashes(data.pool.hashrate + data.pool.hashrateSolo);
         document.getElementById("networkDifficulty").innerHTML = readableNumber(data.network.difficulty);
-        document.getElementById("poolWorkers").innerHTML = data.pool.workers;
+        document.getElementById("poolWorkers").innerHTML = data.pool.workers + data.pool.workersSolo;
 
         document.getElementById("blocksFound").innerHTML = data.pool.totalBlocks;
         var blockHeights = [];
@@ -19,10 +19,7 @@ function updateAPI() {
         document.getElementById("blocksFoundEverySolo").innerHTML = data.pool.hashrateSolo != 0 ? secondsToHm((((data.network.difficulty / data.config.coinDifficultyTarget) / data.pool.hashrateSolo) * 120)) : "Never";
         document.getElementById("activeWorkersSolo").innerHTML = data.pool.workersSolo;
         document.getElementById("lastReward").innerHTML = data.lastblock.reward / data.config.denominationUnit + " UPX";
-        var currentTime = Math.floor(Date.now() / 1000); 
-        var nextPayoutTime = Math.floor(data.pool.payments[1] / 1000);
-        while(nextPayoutTime < currentTime) { nextPayoutTime += data.config.paymentsInterval; }
-        document.getElementById("nextPayoutIn").innerHTML = secondsToHm(nextPayoutTime - currentTime);
+        document.getElementById("activeWorkers").innerHTML = data.pool.workers;
         document.getElementById("networkHashrate").innerHTML = convertHashes(data.network.difficulty / data.config.coinDifficultyTarget); 
         document.getElementById("blockchainHeight").innerHTML = readableNumber(data.network.height);
 

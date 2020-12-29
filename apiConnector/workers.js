@@ -115,7 +115,7 @@ function displayData() {
                         else if(blocks[i][5] == 2) {
                             confirmed = "Orphaned";
                         }
-                        document.getElementById("blockContribTable").innerHTML += '<tr><td style="width: 170px;">' + formattedTime + '</td><td style="width: 80px;">' + blocks[i][1] + '</td><td>' + blocks[i][2] + '</td><td style="width: 80px;">' + (blocks[i][3]==1 ? "SOLO" : (blocks[i][3]*100).toFixed(1)+"%") + '</td><td style="width: 120px;">' + ((blocks[i][3]*blocks[i][4])/stats.config.denominationUnit).toFixed(2) + ' UPX</td><td style="width: 120px;">' + confirmed + '</td></tr>';
+                        document.getElementById("blockContribTable").innerHTML += '<tr><td style="width: 170px;">' + formattedTime + '</td><td style="width: 80px;">' + blocks[i][1] + '</td><td>' + blocks[i][2] + (blocks[i][3]==1 ? ' <span class="badge badge-pill badge-primary" style=" margin-left: 3px; font-size: 12px;">Solo</span>' : "") + '</td><td style="width: 80px;">' + (blocks[i][3]==1 ? '100%' : (blocks[i][3]*100).toFixed(1)+"%") + '</td><td style="width: 120px;">' + ((blocks[i][3]*blocks[i][4])/stats.config.denominationUnit).toFixed(2) + ' UPX</td><td style="width: 120px;">' + confirmed + '</td></tr>';
                     }
                 });
             });
