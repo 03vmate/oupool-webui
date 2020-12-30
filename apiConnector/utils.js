@@ -1,6 +1,6 @@
 function convertHashes (hashes) {
     if (hashes < 1e3) {
-        return hashes + " H/s"
+        return hashes.toFixed(0) + " H/s"
     }
     else if (hashes > 1e3 && hashes < 1e6) {
         return (hashes / 1e3).toFixed(1) + " kH/s"
