@@ -45,13 +45,13 @@ function displayData() {
                         hashrate += data.workers[i]["hashrate"];
                     }
                     document.getElementById("poolHashrate").innerHTML = convertHashes(hashrate);
-                    document.getElementById("pendingBalance").innerHTML = data.stats.balance / stats.config.denominationUnit + " UPX";
-                    document.getElementById("pendingBalanceUSD").innerHTML = "$" + (cg.market_data.current_price.usd * (data.stats.balance / stats.config.denominationUnit)).toFixed(2);
+                    document.getElementById("pendingBalance").innerHTML = (isNan(data.stats.balance / stats.config.denominationUnit) ? "0" : data.stats.balance / stats.config.denominationUnit) + " UPX";
+                    document.getElementById("pendingBalanceUSD").innerHTML = isNan(data.stats.balance / stats.config.denominationUnit) ? "" : ("$" + (cg.market_data.current_price.usd * (data.stats.balance / stats.config.denominationUnit)).toFixed(2));
                     var currentTime = Math.floor(Date.now() / 1000); 
                     var nextPayoutTime = Math.floor(stats.pool.payments[1] / 1000);
                     while(nextPayoutTime < currentTime) { nextPayoutTime += stats.config.paymentsInterval; }
                     document.getElementById("nextPayoutIn").innerHTML = secondsToHm(nextPayoutTime - currentTime);
-                    document.getElementById("totalPaid").innerHTML = data.stats.paid / stats.config.denominationUnit + " UPX";
+                    document.getElementById("totalPaid").innerHTML = (isNan(data.stats.paid / stats.config.denominationUnit) ? "0" : (data.stats.paid / stats.config.denominationUnit)) + " UPX";
                     document.getElementById("totalPaidUSD").innerHTML = "$" + (cg.market_data.current_price.usd * (data.stats.paid / stats.config.denominationUnit)).toFixed(2);
                     document.getElementById("roundContrib").innerHTML = (data.stats.roundScore * 100 / stats.pool.roundScore).toFixed(1) + "%";
                     var workers = data.workers;
