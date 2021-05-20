@@ -24,85 +24,22 @@ function updateAPI() {
         document.getElementById("blockchainHeight").innerHTML = readableNumber(data.network.height);
 
         //Hashrate Chart
-        var hashrateLabels = [];
-        var hashrateData = [];
-        for (var i = 0; i < data.charts.hashrate.length; i++) {
-            var date = new Date(data.charts.hashrate[i][0] * 1000)
-            var hours = date.getHours();
-            var minutes = "0" + date.getMinutes();
-            hashrateLabels.push(hours + ':' + minutes.substr(-2));
-            hashrateData.push(data.charts.hashrate[i][1]);
-        }
-        $("#sparkline-revenue").sparkline(hashrateData, {
-            type: 'line',
-            width: '99.5%',
-            height: '100',
-            lineColor: '#5969ff',
-            fillColor: '#222222',
-            lineWidth: 2,
-            spotColor: '',
-            minSpotColor: '',
-            maxSpotColor: '',
-            resize: true,
-            tooltipFormat: '',
-            cursor: '',
-            highlightLineColor: '',
-            highlightSpotColor: ''
-        });
+        var chartData = processChartData(data.charts.hashrate);
+        hashrateChart.data.datasets[0].data = chartData["data"];
+        hashrateChart.data.labels = chartData["labels"];
+        hashrateChart.update();
 
-        //Diff Chart
-        var diffLabels = [];
-        var diffData = [];
-        for (var i = 0; i < data.charts.difficulty.length; i++) {
-            var date = new Date(data.charts.difficulty[i][0] * 1000)
-            var hours = date.getHours();
-            var minutes = "0" + date.getMinutes();
-            diffLabels.push(hours + ':' + minutes.substr(-2));
-            diffData.push(data.charts.difficulty[i][1]);
-        }
-        $("#sparkline-revenue2").sparkline(diffData, {
-            type: 'line',
-            width: '99.5%',
-            height: '100',
-            lineColor: '#ff0000',
-            fillColor: '#222222',
-            lineWidth: 2,
-            spotColor: '',
-            minSpotColor: '',
-            maxSpotColor: '',
-            resize: true,
-            tooltipFormat: '',
-            cursor: '',
-            highlightLineColor: '',
-            highlightSpotColor: ''
-        });
+        //Diff chart
+        chartData = processChartData(data.charts.difficulty);
+        diffChart.data.datasets[0].data = chartData["data"];
+        diffChart.data.labels = chartData["labels"];
+        diffChart.update();
 
-        //Diff Chart
-        var workersLabels = [];
-        var workersData = [];
-        for (var i = 0; i < data.charts.workers.length; i++) {
-            var date = new Date(data.charts.workers[i][0] * 1000)
-            var hours = date.getHours();
-            var minutes = "0" + date.getMinutes();
-            workersLabels.push(hours + ':' + minutes.substr(-2));
-            workersData.push(data.charts.workers[i][1]);
-        }
-        $("#sparkline-revenue3").sparkline(workersData, {
-            type: 'line',
-            width: '99.5%',
-            height: '100',
-            lineColor: '#25d5f2',
-            fillColor: '#222222',
-            lineWidth: 2,
-            spotColor: '',
-            minSpotColor: '',
-            maxSpotColor: '',
-            resize: true,
-            tooltipFormat: '',
-            cursor: '',
-            highlightLineColor: '',
-            highlightSpotColor: ''
-        });
+        //Workers chart
+        chartData = processChartData(data.charts.workers);
+        workersChart.data.datasets[0].data = chartData["data"];
+        workersChart.data.labels = chartData["labels"];
+        workersChart.update();
         
     });
 }
@@ -120,30 +57,14 @@ function updatePriceGraph() {
     fetch(cgApi + "/market_chart?vs_currency=usd&days=1").then(Response => Response.json()).then(data => {
         var priceLabels = [];
         var priceData = [];
-        for (var i = 0; i < data.prices.length; i++) {
-            var date = new Date(data.prices[i][0] * 1000);
-            var hours = date.getHours();
-            var minutes = "0" + date.getMinutes();
-            priceLabels.push(hours + ':' + minutes.substr(-2));
+        for (var i = 0; i < data.prices.length; i+=2) {
+            var date = new Date(data.prices[i][0]);
+            priceLabels.push(date.getHours() + ":" + date.getMinutes());
             priceData.push(data.prices[i][1]);
         }
-        
-        $("#sparkline-revenue4").sparkline(priceData, {
-            type: 'line',
-            width: '99.5%',
-            height: '100',
-            lineColor: '#ffa500',
-            fillColor: '#222222',
-            lineWidth: 2,
-            spotColor: '',
-            minSpotColor: '',
-            maxSpotColor: '',
-            resize: true,
-            tooltipFormat: '',
-            cursor: '',
-            highlightLineColor: '',
-            highlightSpotColor: ''
-        });
+        priceChart.data.datasets[0].data = priceData;
+        priceChart.data.labels = priceLabels;
+        priceChart.update();
 
 
     });
@@ -165,6 +86,107 @@ function updateIndex() {
     updatePriceGraph();
     updateTopMiners();
 }
+
+function processChartData(chartdata) {
+    var labels = [];
+    var data = [];
+    for (var i = 0; i < chartdata.length; i++) {
+        labels.push(toTimestring(chartdata[i][0]));
+        data.push(chartdata[i][1]);
+    }
+    return {labels, data};
+}
+
+function toTimestring(timestamp, mult = 1000) {
+    var date = new Date(timestamp*mult);
+    return (date.getMonth() + 1) + "/" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes();
+}
+
+var chartOptions = {
+    elements: {
+        point: {
+            pointRadius: 2,
+            pointBackgroundColor: "#000"
+        }
+    },
+    maintainAspectRatio: false,
+    plugins: {
+        legend: {
+            display: false
+        }
+    },
+    title: {
+        display: false
+    },
+    scales: {
+        x: {
+            ticks: {
+                display: false
+            }
+        },
+        y: {
+            ticks: {
+                display: false
+            }
+        }
+    }
+}
+
+var hashrateChart = new Chart(document.getElementById("hashrateChart"), {
+    type: 'line',
+    data: {
+    labels: [],
+    datasets: [{ 
+        data: [],
+        label: "",
+        borderColor: "#6060ff",
+        fill: false
+        }
+    ]},
+    options: chartOptions
+});
+
+var diffChart = new Chart(document.getElementById("diffChart"), {
+    type: 'line',
+    data: {
+    labels: [],
+    datasets: [{ 
+        data: [],
+        label: "",
+        borderColor: "#ff0000",
+        fill: false
+        }
+    ]},
+    options: chartOptions
+});
+
+var workersChart = new Chart(document.getElementById("workersChart"), {
+    type: 'line',
+    data: {
+    labels: [],
+    datasets: [{ 
+        data: [],
+        label: "",
+        borderColor: "#25d5f2",
+        fill: false
+        }
+    ]},
+    options: chartOptions
+});
+
+var priceChart = new Chart(document.getElementById("priceChart"), {
+    type: 'line',
+    data: {
+    labels: [],
+    datasets: [{ 
+        data: [],
+        label: "",
+        borderColor: "#ffa500",
+        fill: false
+        }
+    ]},
+    options: chartOptions
+});
 
 updateIndex();
 setInterval(updateIndex, 10000);

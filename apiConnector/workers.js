@@ -1,5 +1,4 @@
 document.getElementById("boxButton").addEventListener("click", function() {
-    console.log("event called")
     fetch(poolApiUrl + "/stats_address?address=" + document.getElementById("addressBox").value).then(Response => Response.json()).then(data => {
         if(data.error != "Not found") {
             var now = new Date();
@@ -127,4 +126,5 @@ function displayData() {
 var ui = document.getElementsByClassName('workerStats');
 for (var i = 0; i < ui.length; i++) {
     ui[i].style.visibility = "hidden";
+
 }

@@ -80,7 +80,10 @@
                                             <h1 class="mb-1" id="poolHashrate"></h1>
                                         </div>
                                     </div>
-                                    <div id="sparkline-revenue"></div>
+                                    <div style="height: 100px; width: 100%;">
+                                        <canvas id="hashrateChart" style="height: 100px"></canvas>
+                                    </div>
+                                    
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
@@ -91,7 +94,9 @@
                                             <h1 class="mb-1" id="networkDifficulty"></h1>
                                         </div>
                                     </div>
-                                    <div id="sparkline-revenue2"></div>
+                                    <div style="height: 100px; width: 100%;">
+                                        <canvas id="diffChart" style="height: 100px"></canvas>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
@@ -102,7 +107,9 @@
                                             <h1 class="mb-1" id="poolWorkers"></h1>
                                         </div>
                                     </div>
-                                    <div id="sparkline-revenue3"></div>
+                                    <div style="height: 100px; width: 100%;">
+                                        <canvas id="workersChart" style="height: 100px"></canvas>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
@@ -113,7 +120,9 @@
                                             <h1 class="mb-1" id="coinPrice"></h1>
                                         </div>
                                     </div>
-                                    <div id="sparkline-revenue4"></div>
+                                    <div style="height: 100px; width: 100%;">
+                                        <canvas id="priceChart" style="height: 100px"></canvas>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -139,28 +148,6 @@
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                                <div class="card border-3 border-top border-top-green">
-                                    <div class="card-body">
-                                        <h5 class="text-muted">Blocks Found - Solo</h5>
-                                        <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1" id="blocksFoundSolo"></h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                                <div class="card border-3 border-top border-top-green">
-                                    <div class="card-body">
-                                        <h5 class="text-muted">Last Block Found - Solo</h5>
-                                        <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1" id="lastBlockFoundSolo">Unknown</h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <div class="card border-3 border-top border-top-primary">
                                     <div class="card-body">
                                         <h5 class="text-muted">Blocks Found Every - Prop</h5>
@@ -176,6 +163,28 @@
                                         <h5 class="text-muted">Active Workers - Prop</h5>
                                         <div class="metric-value d-inline-block">
                                             <h1 class="mb-1" id="activeWorkers"></h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                <div class="card border-3 border-top border-top-green">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Blocks Found - Solo</h5>
+                                        <div class="metric-value d-inline-block">
+                                            <h1 class="mb-1" id="blocksFoundSolo"></h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                <div class="card border-3 border-top border-top-green">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Last Block Found - Solo</h5>
+                                        <div class="metric-value d-inline-block">
+                                            <h1 class="mb-1" id="lastBlockFoundSolo">Unknown</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -270,6 +279,7 @@
     <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
     <script src="assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
     <script src="apiConnector/config.js"></script>
     <script src="apiConnector/utils.js"></script>
     <script src="apiConnector/index.js"></script>
