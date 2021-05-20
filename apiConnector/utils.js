@@ -49,7 +49,7 @@ function secondsToHm(d) {
     else            { hDisplay = h + "h "; }
     if(m == 0)      { mDisplay = ""; }
     else            { mDisplay = m + "m "; }
-    if(d < 60) return "< 1m"
+    if(d < 60) return "< 1m "
     return hDisplay + mDisplay; 
 }
 
